@@ -1,0 +1,10 @@
+<!--miniprogram/pages/linePatRec/linePatRec.wxml-->
+<view class="main_v" style="width:100%;">
+  <view style="color:#707DFD;text-align:center;font-weight:bold;">巡线界面</view>
+  <image src="/images/001.png" style="width:26px;height:27px;float:right;margin-right:10px;"/>
+  <view class="jrxjwcl_v" style="width:100px;height:100px;text-align:center;background-color:red;margin:25px auto 0;padding:1px;">
+    <view style="font-size:12px;margin-top:20px;">今日巡检完成率</view>
+    <view style="color:#2793E5;font-size:30px;font-weight:bold;margin-top:5px;">55</view>
+    <text style="margin-top:-25px;margin-left:20px;position:absolute;">%</text>
+  </view>
+</view>

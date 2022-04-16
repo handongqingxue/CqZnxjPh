@@ -1,0 +1,1 @@
+"E:\Tencent\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-5gydtakx05896a13 --n quickstartFunctions --r --project "E:\我的文件\人员定位系统\华凌智能巡检、外来承包商管理\CqZnxjPh"
