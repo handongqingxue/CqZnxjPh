@@ -1,0 +1,75 @@
+/* miniprogram/pages/devAccPat/devAccPat.wxss */
+.main_v{
+  width:100%;
+  background-color:#F8FCFF;
+}
+.pl_v{
+  width:100%;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+}
+.plName_v{
+  color:#707070;
+}
+.pa_v,.pda_v{
+  width:100%;
+  height:30px;
+  line-height:30px;
+  background-color:#fff;
+}
+.paName_v{
+  color: #7ABDEF;
+  font-size:12px;
+  margin-left: 10px;
+}
+.pdaName_v{
+  color: #494949;
+  font-size:12px;
+  margin-left: 10px;
+}
+.ppck_t,.fpcv_t{
+  color:#C8C8C8;
+  font-size:12px;
+  margin-left:20px;
+}
+.ppc_line_t,.ppcv_t{
+  color:#C8C8C8;
+  font-size:12px;
+  margin-left:5px;
+}
+
+.pdp_list_sv{
+  margin-top:10px;
+}
+.pdp_list_v{
+  width:100%;
+}
+.pdp_list_v .item_v{
+  width:100%;
+  height:50px;
+  margin-top:2px;
+  background-color:#fff;
+  padding-top: 1px;
+}
+.pdp_list_v .item_v .num_v{
+  width:30px;
+  height:30px;
+  line-height:30px;
+  margin-top:10px;
+  margin-left:15px;
+  color:#fff;
+  text-align:center;
+  background-color:#ADD4F6;
+  border-radius:15px;
+}
+.pdp_list_v .item_v .pdpName_t{
+  margin-top:-25px;
+  margin-left:60px;
+  position:absolute;
+}
+.pdp_list_v .item_v .pdpValue_t{
+  margin-top:-25px;
+  margin-right:20px;
+  float:right;
+}

@@ -1,0 +1,30 @@
+<!--miniprogram/pages/devAccPat/devAccPat.wxml-->
+<view class="main_v">
+  <view class="pl_v">
+    <text class="plName_v">路线1</text>
+  </view>
+  <view class="pa_v">
+    <text class="paName_v">区域1</text>
+  </view>
+  <view class="pda_v">
+    <text class="pdaName_v">离心泵001</text>
+    <text class="ppck_t">巡项总数:</text>
+    <text class="fpcv_t">8</text>
+    <text class="ppc_line_t">/</text>
+    <text class="ppcv_t">12</text>
+  </view>
+  <scroll-view class="pdp_list_sv">
+    <view class="pdp_list_v">
+      <view class="item_v">
+        <view class="num_v">1</view>
+        <text class="pdpName_t">压力</text>
+        <text class="pdpValue_t">30</text>
+      </view>
+      <view class="item_v">
+        <view class="num_v">2</view>
+        <text class="pdpName_t">温度</text>
+        <text class="pdpValue_t">30</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>
