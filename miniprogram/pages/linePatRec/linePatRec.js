@@ -64,13 +64,14 @@ Page({
 
   },
   /**
-   * 扫码事件
+   * 扫码事件:https://blog.csdn.net/qq_29528701/article/details/117391740
    */
   scanCodeEvent1: function(){
     wx.scanCode({
       //onlyFromCamera: true,// 只允许从相机扫码
       success(res){
-        console.log("扫码成功："+JSON.stringify(res))
+        //console.log("扫码成功："+JSON.stringify(res))
+        console.log("aaa"+res.result)
       }
     })
   }
