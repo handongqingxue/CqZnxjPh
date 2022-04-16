@@ -62,5 +62,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  /**
+   * 扫码事件
+   */
+  scanCodeEvent1: function(){
+    wx.scanCode({
+      //onlyFromCamera: true,// 只允许从相机扫码
+      success(res){
+        console.log("扫码成功："+JSON.stringify(res))
+      }
+    })
   }
 })
