@@ -1,0 +1,23 @@
+<!--miniprogram/pages/devParPat/devParPat.wxml-->
+<view class="title_v">设备巡检</view>
+<image class="back_but_img" src="/images/002.png"/>
+<view class="pl_v">
+  <text class="plName_v">{{plName}}</text>
+</view>
+<view class="pa_v">
+  <text class="paName_v">{{paName}}</text>
+</view>
+<view class="pd_v">
+  <text class="pdName_v">{{pdName}}</text>
+</view>
+<view class="pdp_v">
+  <text class="pdpName_v">{{name}}</text>
+</view>
+<view class="pdpVal_v">
+  <input class="val_inp" value="1"/>
+  <text class="unit_text" style="margin-left:120px;margin-top:-35px;position:absolute;">{{unit}}</text>
+</view>
+<view class="pdpMemo_v">
+  <input class="val_inp" placeholder="备注"/>
+</view>
+<button style="width:100%;background-color:#2396F3;font-size:15px;color:#fff;margin-top:20px;">保存</button>

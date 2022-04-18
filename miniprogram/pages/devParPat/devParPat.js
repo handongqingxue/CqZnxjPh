@@ -1,5 +1,5 @@
-// miniprogram/pages/devAccPatEdit/devAccPatEdit.js
-var devAccPat;
+// miniprogram/pages/devParPat/devParPat.js
+var devParPat;
 var rootIP;
 
 Page({
@@ -15,20 +15,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    devAccPat=this;
+    devParPat=this;
     rootIP=getApp().getRootIP();
-    console.log("rootIP==="+rootIP)
 
-    //let pdaNo=options.pdaNo;
-    let pdaNo="0001";
-    devAccPat.setData({pdaNo:pdaNo});
+    //let pdpId=options.pdpId;
+    let pdpId=1;
+    devParPat.setData({pdpId:pdpId});
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    devAccPat.getPDAQrcodeInfo();
+    devParPat.getPDPInfo();
   },
 
   /**
@@ -72,28 +71,21 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getPDAQrcodeInfo:function(){
-    let pdaNo=devAccPat.data.pdaNo;
+  getPDPInfo:function(){
+    let pdpId=devParPat.data.pdpId;
     wx.request({
-      url: rootIP+"getPDAQrcodeInfo",
+      url: rootIP+"getPDPInfo",
       method: 'POST',
-      data: { pdaNo:pdaNo},
+      data: { id:pdpId},
       header: {
         'content-type': 'application/x-www-form-urlencoded',
       },
       success: function (res) {
         console.log(res);
         let data=res.data;
-        let pda=data.pda;
-        let pdpList=data.pdpList;
-        devAccPat.setData({plName:pda.plName,paName:pda.paName,pdName:pda.pdName,pdpList:pdpList});
+        let pdp=data.pdp;
+        devParPat.setData({plName:pdp.plName,paName:pdp.paName,pdName:pdp.pdName,name:pdp.name,unit:pdp.unit});
       }
-    })
-  },
-  goPage:function(e){
-    let id=e.currentTarget.dataset.id;
-    wx.redirectTo({
-      url: '/pages/devParPat/devParPat?pdpId='+id,
     })
   }
 })

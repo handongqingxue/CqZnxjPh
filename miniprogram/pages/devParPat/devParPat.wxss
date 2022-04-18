@@ -1,0 +1,62 @@
+/* miniprogram/pages/devParPat/devParPat.wxss */
+.title_v{
+  width:100%;
+  height:30px;
+  line-height:30px;
+  color:#fff;
+  font-size:12px;
+  text-align:center;
+  background-color:#2396F3;
+}
+.back_but_img{
+  width:27px;
+  height:20px;
+  margin-top:-25px;
+  margin-left:5px;
+}
+.pl_v,.pa_v,.pd_v,.pdp_v{
+  width:100%;
+  height:30px;
+  line-height:30px;
+  background-color:#fff;
+  border-bottom: #C8C8C8 solid 1px;
+}
+.plName_v{
+  color: #7ABDEF;
+  font-size:15px;
+  margin-left: 10px;
+}
+.paName_v,.pdName_v,.pdpName_v{
+  color:#C8C8C8;
+  font-size:12px;
+  margin-left: 10px;
+}
+.pdpVal_v{
+  width:100%;
+  height:40px;
+  line-height:40px;
+  background-color:#fff;
+  border-bottom: #C8C8C8 solid 1px;
+}
+.pdpVal_v .val_inp{
+  width:100px;
+  height:30px;
+  margin-top:5px;
+  margin-left:10px;
+  padding-right:5px;
+  text-align:right;
+  border-bottom:#2396F3 solid 1px;
+}
+.pdpMemo_v{
+  width:100%;
+  height:30px;
+  line-height:30px;
+  background-color:#fff;
+  border-bottom: #C8C8C8 solid 2px;
+}
+.pdpMemo_v .val_inp{
+  width:100px;
+  height:25px;
+  margin-top:2px;
+  margin-left:10px;
+}
