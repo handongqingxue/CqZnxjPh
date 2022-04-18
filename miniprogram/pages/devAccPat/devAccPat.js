@@ -1,4 +1,7 @@
 // miniprogram/pages/devAccPatEdit/devAccPatEdit.js
+var devAccPat;
+var rootIP;
+
 Page({
 
   /**
@@ -12,14 +15,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    devAccPat=this;
+    rootIP=getApp().getRootIP();
+    console.log("rootIP==="+rootIP)
 
+    //let pdaNo=options.pdaNo;
+    let pdaNo="0001";
+    devAccPat.setData({pdaNo:pdaNo});
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    devAccPat.getPDAQrcodeInfo();
   },
 
   /**
@@ -62,5 +71,21 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getPDAQrcodeInfo:function(){
+    let pdaNo=devAccPat.data.pdaNo;
+    console.log("pdaNo==="+pdaNo)
+    wx.request({
+      url: rootIP+"getPDAQrcodeInfo",
+      method: 'POST',
+      data: { pdaNo:pdaNo},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        console.log(res);
+        //var data = res.data;
+      }
+    })
   }
 })

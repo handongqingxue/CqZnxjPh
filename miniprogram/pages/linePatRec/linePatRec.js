@@ -71,7 +71,9 @@ Page({
       //onlyFromCamera: true,// 只允许从相机扫码
       success(res){
         //console.log("扫码成功："+JSON.stringify(res))
-        console.log("aaa"+res.result)
+        wx.redirectTo({
+          url: '/pages/devAccPat/devAccPat?pdaNo='+res.result,
+        })
       }
     })
   }
