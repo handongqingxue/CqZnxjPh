@@ -1,6 +1,8 @@
 // miniprogram/pages/devParPat/devParPat.js
 var devParPat;
 var rootIP;
+var ptId=1;
+var psId=1;
 
 Page({
 
@@ -76,7 +78,7 @@ Page({
     wx.request({
       url: rootIP+"getPDPInfo",
       method: 'POST',
-      data: { id:pdpId},
+      data: { id:pdpId,ptId:ptId},
       header: {
         'content-type': 'application/x-www-form-urlencoded',
       },
@@ -84,8 +86,57 @@ Page({
         console.log(res);
         let data=res.data;
         let pdp=data.pdp;
-        devParPat.setData({plName:pdp.plName,paName:pdp.paName,pdName:pdp.pdName,name:pdp.name,unit:pdp.unit});
+        let dppr=data.dppr;
+        devParPat.setData({pdp:pdp,dppr:dppr});
       }
+    })
+  },
+  getInputValue:function(e){
+    if(e.currentTarget.id=="pdpVal_inp"){
+      let dppr=devParPat.data.dppr;
+      dppr.paramValue=e.detail.value;
+      devParPat.setData({dppr:dppr});
+    }
+    else if(e.currentTarget.id=="pdpMemo_inp"){
+      let dppr=devParPat.data.dppr;
+      dppr.paramMemo=e.detail.value;
+      devParPat.setData({dppr:dppr});
+    }
+  },
+  save:function(){
+    let paramIfExce;
+    let paramValue=devParPat.data.dppr.paramValue;
+    let warnDown=devParPat.data.pdp.warnDown;
+    let warnUp=devParPat.data.pdp.warnUp;
+    if(paramValue>=warnDown&paramValue<=warnUp)
+      paramIfExce=false;
+    else
+      paramIfExce=true;
+    let paramMemo=devParPat.data.dppr.paramMemo;
+    let plId=devParPat.data.pdp.plId;
+    let paId=devParPat.data.pdp.paId;
+    let pdaId=devParPat.data.pdp.pdaId;
+    let pdpId=devParPat.data.pdp.id;
+    console.log("plId==="+plId)
+    console.log("paId==="+paId)
+    console.log("pdaId==="+pdaId)
+    console.log("pdpId==="+pdpId)
+    wx.request({
+      url: rootIP+"saveDevParPatRec",
+      method: 'POST',
+      data: { paramIfExce:paramIfExce,paramValue:paramValue,paramMemo:paramMemo,plId:plId,paId:paId,pdaId:pdaId,pdpId:pdpId,ptId:ptId,psId:psId},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        console.log(res);
+      }
+    })
+  },
+  goPage:function(e){
+    let id=e.currentTarget.dataset.id;
+    wx.redirectTo({
+      url: '/pages/devParPat/devParPat?pdpId='+id,
     })
   }
 })
