@@ -1,6 +1,7 @@
 // miniprogram/pages/devParPat/devParPat.js
 var devParPat;
 var rootIP;
+var serverRootIP;
 var ptId=1;
 var psId=1;
 
@@ -19,10 +20,11 @@ Page({
   onLoad: function (options) {
     devParPat=this;
     rootIP=getApp().getRootIP();
+    serverRootIP=getApp().getServerRootIP();
 
     //let pdpId=options.pdpId;
     let pdpId=1;
-    devParPat.setData({pdpId:pdpId});
+    devParPat.setData({pdpId:pdpId,serverRootIP:serverRootIP});
   },
 
   /**
@@ -117,6 +119,16 @@ Page({
           tempFilePaths:res.tempFilePaths
         })
         */
+      }
+    })
+  },
+  takeVideo:function(){
+    wx.chooseVideo({
+      sourceType: ['album','camera'],
+      maxDuration: 60,
+      camera: 'back',
+      success(res) {
+        console.log(res.tempFilePath)
       }
     })
   },

@@ -17,9 +17,33 @@
   <input class="val_inp" id="pdpVal_inp" value="{{dppr.paramValue}}" bindinput="getInputValue"/>
   <text class="unit_text">{{pdp.unit}}</text>
 </view>
-<view class="photo_v">
+<view class="upload_photo_v">
   <image class="take_but_img" src="/images/003.png" catchtap="takePhoto"/>
-  <text class="take_text" style="margin-left:5px;position:absolute;color:#C8C8C8;font-size:12px;">拍照</text>
+  <text class="take_text">拍照</text>
+</view>
+<view class="photo_list_v">
+  <view class="item_v">
+    <image class="photo_img" src="{{serverRootIP}}{{dppr.photoUrl1}}"/>
+    <image class="delete_but_img" src="/images/004.png"/>
+  </view>
+  <view class="item_v" style="margin-left:105px;margin-top:-100px;">
+    <image class="photo_img" src="{{serverRootIP}}{{dppr.photoUrl2}}"/>
+    <image class="delete_but_img" src="/images/004.png"/>
+  </view>
+  <view class="item_v" style="margin-left:210px;margin-top:-100px;">
+    <image class="photo_img" src="{{serverRootIP}}{{dppr.photoUrl3}}"/>
+    <image class="delete_but_img" src="/images/004.png"/>
+  </view>
+</view>
+<view class="upload_video_v">
+  <image class="take_but_img" src="/images/005.png" catchtap="takeVideo"/>
+  <text class="take_text">视频</text>
+</view>
+<view class="video_list_v">
+  <view class="item_v">
+    <video src="{{serverRootIP}}{{dppr.videoUrl1}}"/>
+    <image class="delete_but_img" src="/images/004.png"/>
+  </view>
 </view>
 <view class="pdpMemo_v">
   <input class="val_inp" id="pdpMemo_inp" placeholder="备注" value="{{dppr.paramMemo}}" bindinput="getInputValue"/>
