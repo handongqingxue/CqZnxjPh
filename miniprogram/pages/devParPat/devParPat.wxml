@@ -30,11 +30,9 @@
     <image class="photo_img" src="{{serverRootIP}}{{dppr.photoUrl2}}"/>
     <image class="delete_but_img" src="/images/004.png"/>
   </view>
-  <view wx:if="{{dppr.photoUrl3!=null}}">
-  <view class="item_v" style="margin-left:210px;margin-top:-100px;">
+  <view class="item_v" wx:if="{{dppr.photoUrl3!=null}}" style="margin-left:210px;margin-top:-100px;">
     <image class="photo_img" src="{{serverRootIP}}{{dppr.photoUrl3}}"/>
     <image class="delete_but_img" src="/images/004.png"/>
-  </view>
   </view>
 </view>
 <view class="upload_video_v">

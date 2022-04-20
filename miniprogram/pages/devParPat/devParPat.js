@@ -112,13 +112,7 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         console.log("res.tempFilePaths==="+res.tempFilePaths)
-        devParPat.setData({tempFilePaths:res.tempFilePaths});
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        /*
-        devParPat.setData({
-          tempFilePaths:res.tempFilePaths
-        })
-        */
+        devParPat.setData({tempPhotoPaths:res.tempFilePaths});
       }
     })
   },
@@ -129,6 +123,7 @@ Page({
       camera: 'back',
       success(res) {
         console.log(res.tempFilePath)
+        devParPat.setData({tempVideoPath:res.tempFilePath});
       }
     })
   },
@@ -146,14 +141,14 @@ Page({
     let paId=devParPat.data.pdp.paId;
     let pdaId=devParPat.data.pdp.pdaId;
     let pdpId=devParPat.data.pdp.id;
-    let tempFilePaths=devParPat.data.tempFilePaths;
+    let tempPhotoPaths=devParPat.data.tempPhotoPaths;
     console.log("plId==="+plId)
     console.log("paId==="+paId)
     console.log("pdaId==="+pdaId)
     console.log("pdpId==="+pdpId)
-    console.log("tempFilePaths==="+tempFilePaths)
-    console.log(tempFilePaths.split(","));
-    return false;
+    console.log("tempPhotoPaths==="+tempPhotoPaths)
+    let tempPhotoPathLength=tempPhotoPaths.length;
+    console.log(tempPhotoPathLength);
 
     wx.request({
       url: rootIP+"saveDevParPatRec",
@@ -164,24 +159,39 @@ Page({
       },
       success: function (res) {
         console.log(res);
+        devParPat.uploadPhoto(0);
       }
     })
   },
-  uploadFile:function(fileNum){
+  uploadPhoto:function(index){
     let pdpId=devParPat.data.pdp.id;
+    let tempPhotoPaths=devParPat.data.tempPhotoPaths;
     wx.uploadFile({
       url: rootIP+'uploadFile', //仅为示例，非真实的接口地址
-      filePath: tempFilePaths[fileNum-1],
+      filePath: tempPhotoPaths[index],
       name: 'file',
-      formData:{fileNum:fileNum,pdpId:pdpId,ptId:ptId},
-      /*
-      formData:{
-        paramIfExce:paramIfExce,paramValue:paramValue,paramMemo:paramMemo,plId:plId,paId:paId,pdaId:pdaId,pdpId:pdpId,ptId:ptId,psId:psId
-      },
-      */
+      formData:{fileNum:index+1,pdpId:pdpId,ptId:ptId},
       success: function(res){
         var data = res.data
-        //do something
+        let tempPhotoPathLength=devParPat.data.tempPhotoPaths.length;
+        index++;
+        if(index<tempPhotoPathLength)
+          devParPat.uploadPhoto(index);
+        else
+          devParPat.uploadVideo();
+      }
+    })
+  },
+  uploadVideo:function(){
+    let pdpId=devParPat.data.pdp.id;
+    let tempVideoPath=devParPat.data.tempVideoPath;
+    wx.uploadFile({
+      url: rootIP+'uploadFile', //仅为示例，非真实的接口地址
+      filePath: tempVideoPath,
+      name: 'file',
+      formData:{fileNum:4,pdpId:pdpId,ptId:ptId},
+      success: function(res){
+        
       }
     })
   },
