@@ -152,7 +152,9 @@ Page({
     console.log("pdaId==="+pdaId)
     console.log("pdpId==="+pdpId)
     console.log("tempFilePaths==="+tempFilePaths)
-    /*
+    console.log(tempFilePaths.split(","));
+    return false;
+
     wx.request({
       url: rootIP+"saveDevParPatRec",
       method: 'POST',
@@ -164,22 +166,23 @@ Page({
         console.log(res);
       }
     })
-    */
-   console.log("paramIfExce==="+paramIfExce)
+  },
+  uploadFile:function(fileNum){
+    let pdpId=devParPat.data.pdp.id;
     wx.uploadFile({
-        url: rootIP+'uploadFile', //仅为示例，非真实的接口地址
-        filePath: tempFilePaths[0],
-        name: 'file',
-        formData:{fileNum:1,pdpId:pdpId,ptId:ptId},
-        /*
-        formData:{
-          paramIfExce:paramIfExce,paramValue:paramValue,paramMemo:paramMemo,plId:plId,paId:paId,pdaId:pdaId,pdpId:pdpId,ptId:ptId,psId:psId
-        },
-        */
-        success: function(res){
-          var data = res.data
-          //do something
-        }
+      url: rootIP+'uploadFile', //仅为示例，非真实的接口地址
+      filePath: tempFilePaths[fileNum-1],
+      name: 'file',
+      formData:{fileNum:fileNum,pdpId:pdpId,ptId:ptId},
+      /*
+      formData:{
+        paramIfExce:paramIfExce,paramValue:paramValue,paramMemo:paramMemo,plId:plId,paId:paId,pdaId:pdaId,pdpId:pdpId,ptId:ptId,psId:psId
+      },
+      */
+      success: function(res){
+        var data = res.data
+        //do something
+      }
     })
   },
   goPage:function(e){

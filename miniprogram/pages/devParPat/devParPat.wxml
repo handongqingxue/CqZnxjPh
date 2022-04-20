@@ -22,17 +22,19 @@
   <text class="take_text">拍照</text>
 </view>
 <view class="photo_list_v">
-  <view class="item_v">
+  <view class="item_v" wx:if="{{dppr.photoUrl1!=null}}">
     <image class="photo_img" src="{{serverRootIP}}{{dppr.photoUrl1}}"/>
     <image class="delete_but_img" src="/images/004.png"/>
   </view>
-  <view class="item_v" style="margin-left:105px;margin-top:-100px;">
+  <view class="item_v" wx:if="{{dppr.photoUrl2!=null}}" style="margin-left:105px;margin-top:-100px;">
     <image class="photo_img" src="{{serverRootIP}}{{dppr.photoUrl2}}"/>
     <image class="delete_but_img" src="/images/004.png"/>
   </view>
+  <view wx:if="{{dppr.photoUrl3!=null}}">
   <view class="item_v" style="margin-left:210px;margin-top:-100px;">
     <image class="photo_img" src="{{serverRootIP}}{{dppr.photoUrl3}}"/>
     <image class="delete_but_img" src="/images/004.png"/>
+  </view>
   </view>
 </view>
 <view class="upload_video_v">
