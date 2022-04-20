@@ -52,6 +52,16 @@
   margin-top:-35px;
   position:absolute;
 }
+.photo_v{
+  width:100%;
+  height:30px;
+  line-height:30px;
+  background-color:#fff;
+  border-bottom: #C8C8C8 solid 1px;
+}
+.photo_v .take_but_img{
+  width:30px;height:30px;margin-left:5px;
+}
 .pdpMemo_v{
   width:100%;
   height:30px;

@@ -17,6 +17,10 @@
   <input class="val_inp" id="pdpVal_inp" value="{{dppr.paramValue}}" bindinput="getInputValue"/>
   <text class="unit_text">{{pdp.unit}}</text>
 </view>
+<view class="photo_v">
+  <image class="take_but_img" src="/images/003.png" catchtap="takePhoto"/>
+  <text class="take_text" style="margin-left:5px;position:absolute;color:#C8C8C8;font-size:12px;">拍照</text>
+</view>
 <view class="pdpMemo_v">
   <input class="val_inp" id="pdpMemo_inp" placeholder="备注" value="{{dppr.paramMemo}}" bindinput="getInputValue"/>
 </view>

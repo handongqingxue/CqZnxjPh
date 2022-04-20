@@ -103,6 +103,23 @@ Page({
       devParPat.setData({dppr:dppr});
     }
   },
+  takePhoto:function(){
+    wx.chooseImage({
+      //count: 1, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        console.log("res.tempFilePaths==="+res.tempFilePaths)
+        devParPat.setData({tempFilePaths:res.tempFilePaths});
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        /*
+        devParPat.setData({
+          tempFilePaths:res.tempFilePaths
+        })
+        */
+      }
+    })
+  },
   save:function(){
     let paramIfExce;
     let paramValue=devParPat.data.dppr.paramValue;
@@ -117,10 +134,13 @@ Page({
     let paId=devParPat.data.pdp.paId;
     let pdaId=devParPat.data.pdp.pdaId;
     let pdpId=devParPat.data.pdp.id;
+    let tempFilePaths=devParPat.data.tempFilePaths;
     console.log("plId==="+plId)
     console.log("paId==="+paId)
     console.log("pdaId==="+pdaId)
     console.log("pdpId==="+pdpId)
+    console.log("tempFilePaths==="+tempFilePaths)
+    /*
     wx.request({
       url: rootIP+"saveDevParPatRec",
       method: 'POST',
@@ -131,6 +151,23 @@ Page({
       success: function (res) {
         console.log(res);
       }
+    })
+    */
+   console.log("paramIfExce==="+paramIfExce)
+    wx.uploadFile({
+        url: rootIP+'uploadFile', //仅为示例，非真实的接口地址
+        filePath: tempFilePaths[0],
+        name: 'file',
+        formData:{fileNum:1,pdpId:pdpId,ptId:ptId},
+        /*
+        formData:{
+          paramIfExce:paramIfExce,paramValue:paramValue,paramMemo:paramMemo,plId:plId,paId:paId,pdaId:pdaId,pdpId:pdpId,ptId:ptId,psId:psId
+        },
+        */
+        success: function(res){
+          var data = res.data
+          //do something
+        }
     })
   },
   goPage:function(e){
