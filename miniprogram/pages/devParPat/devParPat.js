@@ -23,7 +23,7 @@ Page({
     serverRootIP=getApp().getServerRootIP();
 
     //let pdpId=options.pdpId;
-    let pdpId=1;
+    let pdpId=6;
     devParPat.setData({pdpId:pdpId,serverRootIP:serverRootIP});
   },
 
@@ -97,7 +97,8 @@ Page({
         if(dppr.photoUrl3!=null)
           devParPat.setPhoto(3,serverRootIP+dppr.photoUrl3);
         devParPat.setPhotoLocation();
-        devParPat.setVideo(serverRootIP+dppr.videoUrl1);
+        if(dppr.videoUrl1!=null)
+          devParPat.setVideo(serverRootIP+dppr.videoUrl1);
       }
     })
   },
@@ -107,11 +108,25 @@ Page({
       dppr.paramValue=e.detail.value;
       devParPat.setData({dppr:dppr});
     }
+    else if(e.currentTarget.id=="pdpExceInfo_inp"){
+      let dppr=devParPat.data.dppr;
+      dppr.paramExceInfo=e.detail.value;
+      devParPat.setData({dppr:dppr});
+    }
     else if(e.currentTarget.id=="pdpMemo_inp"){
       let dppr=devParPat.data.dppr;
       dppr.paramMemo=e.detail.value;
       devParPat.setData({dppr:dppr});
     }
+  },
+  radioChange:function(e){
+    let value=e.detail.value;
+    let dppr=devParPat.data.dppr;
+    if(value==1)
+      dppr.paramIfExce=true;
+    else
+      dppr.paramIfExce=false;
+    devParPat.setData({dppr:dppr});
   },
   takePhoto:function(){
     wx.chooseImage({
@@ -153,37 +168,63 @@ Page({
   },
   save:function(){
     let paramIfExce;
+    let type=devParPat.data.pdp.type;
     let paramValue=devParPat.data.dppr.paramValue;
     let warnDown=devParPat.data.pdp.warnDown;
     let warnUp=devParPat.data.pdp.warnUp;
-    if(paramValue>=warnDown&paramValue<=warnUp)
-      paramIfExce=false;
-    else
-      paramIfExce=true;
+    if(type==1){
+      if(paramValue>=warnDown&paramValue<=warnUp)
+        paramIfExce=false;
+      else
+        paramIfExce=true;
+    }
+    else{
+      paramIfExce=devParPat.data.dppr.paramIfExce;
+    }
+    let paramExceInfo=devParPat.data.dppr.paramExceInfo;
     let paramMemo=devParPat.data.dppr.paramMemo;
     let plId=devParPat.data.pdp.plId;
     let paId=devParPat.data.pdp.paId;
     let pdaId=devParPat.data.pdp.pdaId;
     let pdpId=devParPat.data.pdp.id;
     let tempPhotoPaths=devParPat.data.tempPhotoPaths;
+    console.log("paramIfExce==="+paramIfExce)
     console.log("plId==="+plId)
     console.log("paId==="+paId)
     console.log("pdaId==="+pdaId)
     console.log("pdpId==="+pdpId)
     console.log("tempPhotoPaths==="+tempPhotoPaths)
-    let tempPhotoPathLength=tempPhotoPaths.length;
-    console.log(tempPhotoPathLength);
+    let tempPhotoPathLength=0;
+    if(tempPhotoPaths!=undefined){
+      tempPhotoPathLength=tempPhotoPaths.length;
+      console.log(tempPhotoPathLength);
+    }
 
+    let paramData={};
+    paramData.paramIfExce=paramIfExce;
+    if(type==1)
+      paramData.paramValue=paramValue;
+    else
+      paramData.paramExceInfo=paramExceInfo;
+    paramData.paramMemo=paramMemo;
+    paramData.plId=plId;
+    paramData.paId=paId;
+    paramData.pdaId=pdaId;
+    paramData.pdpId=pdpId;
+    paramData.ptId=ptId;
+    paramData.psId=psId;
+    //{ paramIfExce:paramIfExce,paramExceInfo:paramExceInfo,paramMemo:paramMemo,plId:plId,paId:paId,pdaId:pdaId,pdpId:pdpId,ptId:ptId,psId:psId}
     wx.request({
       url: rootIP+"saveDevParPatRec",
       method: 'POST',
-      data: { paramIfExce:paramIfExce,paramValue:paramValue,paramMemo:paramMemo,plId:plId,paId:paId,pdaId:pdaId,pdpId:pdpId,ptId:ptId,psId:psId},
+      data: paramData,
       header: {
         'content-type': 'application/x-www-form-urlencoded',
       },
       success: function (res) {
         console.log(res);
-        devParPat.uploadPhoto(0);
+        if(tempPhotoPathLength>0)
+          devParPat.uploadPhoto(0);
       }
     })
   },

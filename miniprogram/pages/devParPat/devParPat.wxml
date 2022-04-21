@@ -13,9 +13,20 @@
 <view class="pdp_v">
   <text class="pdpName_v">{{pdp.name}}</text>
 </view>
-<view class="pdpVal_v">
+<view class="pdpVal_v" wx:if="{{pdp.type==1}}">
   <input class="val_inp" id="pdpVal_inp" value="{{dppr.paramValue}}" bindinput="getInputValue"/>
   <text class="unit_text">{{pdp.unit}}</text>
+</view>
+<view class="pdpExceInfo_v" wx:if="{{pdp.type==2}}">
+  <view class="rg_v">
+    <radio-group bindchange="radioChange">
+      <radio value="0" checked="true">正常</radio>
+      <radio value="1">异常</radio>
+    </radio-group>
+  </view>
+  <view class="inp_v" wx:if="{{dppr.paramIfExce}}">
+    <input class="val_inp" id="pdpExceInfo_inp" value="{{dppr.paramExceInfo}}" bindinput="getInputValue"/>
+  </view>
 </view>
 <view class="upload_photo_v">
   <image class="take_but_img" src="/images/003.png" catchtap="takePhoto"/>
