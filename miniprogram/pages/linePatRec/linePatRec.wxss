@@ -1,1 +1,88 @@
 /* pages/linePatRec/linePatRec.wxss */
+.main_v{
+  width:100%;
+}
+.title_v{
+  color:#707DFD;
+  text-align:center;
+  font-weight:bold;
+}
+.scan_but_img{
+  width:26px;
+  height:27px;
+  float:right;
+  margin-right:10px;
+}
+.jrxjwcl_v{
+  width:100px;
+  height:100px;
+  text-align:center;
+  background-color:red;
+  margin:25px auto 0;
+  padding:1px;
+}
+.jrxjwcl_v .title_v{
+  font-size:12px;
+  margin-top:20px;
+}
+.jrxjwcl_v .val_v{
+  color:#2793E5;
+  font-size:30px;
+  font-weight:bold;
+  margin-top:5px;
+}
+.jrxjwcl_v .bfh_text{
+  margin-top:-25px;
+  margin-left:20px;
+  position:absolute;
+}
+.xjlx_v{
+  width:90%;
+  height:30px;
+  margin:20px auto 0;
+}
+.xjlx_v .item_v{
+  width:130px;
+  height:30px;
+  line-height:30px;
+  border-radius:15px;
+}
+.xjlx_v .rcxj_item_v{
+  color:#fff;
+  background-color:#2396EF;
+}
+.xjlx_v .lsxj_item_v{
+  margin-left:140px;
+  margin-top:-30px;
+  color:#2793E5;
+  background-color:#F8FCFF;
+}
+.xjlx_v .item_v image{
+  width:30px;
+  height:20px;
+  margin-top:4px;
+  margin-left:15px;
+  position:absolute;
+}
+.xjlx_v .item_v text{
+  margin-left:55px;
+  font-size:12px;
+}
+.pl_list_v{
+  width:90%;
+  margin:20px auto 0;
+}
+.pl_list_v .item_v{
+  width:100%;
+  height:60px;
+  background-color:#00f;
+}
+.pl_list_v .item_v .name_text{
+  font-size:13px;
+  position:absolute;
+}
+.pl_list_v .item_v .paccl_text{
+  font-size:10px;
+  margin-top:20px;
+  position:absolute;
+}

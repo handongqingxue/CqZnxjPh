@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/linePatRec/linePatRec",
     "pages/devParPat/devParPat",
     "pages/devAccPat/devAccPat",
-    "pages/linePatRec/linePatRec",
     "pages/index/index",
     "pages/getOpenId/index",
     "pages/getMiniProgramCode/index",

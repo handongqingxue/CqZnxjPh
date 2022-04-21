@@ -66,7 +66,7 @@ Page({
   /**
    * 扫码事件:https://blog.csdn.net/qq_29528701/article/details/117391740
    */
-  scanCodeEvent1: function(){
+  scanCodeEvent: function(){
     wx.scanCode({
       //onlyFromCamera: true,// 只允许从相机扫码
       success(res){
