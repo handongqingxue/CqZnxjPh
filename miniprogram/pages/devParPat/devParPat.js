@@ -97,6 +97,7 @@ Page({
         if(dppr.photoUrl3!=null)
           devParPat.setPhoto(3,serverRootIP+dppr.photoUrl3);
         devParPat.setPhotoLocation();
+        devParPat.setVideo(serverRootIP+dppr.videoUrl1);
       }
     })
   },
@@ -141,8 +142,12 @@ Page({
       maxDuration: 60,
       camera: 'back',
       success(res) {
-        console.log(res.tempFilePath)
-        devParPat.setData({tempVideoPath:res.tempFilePath});
+        let tempFilePath=res.tempFilePath;
+        console.log(tempFilePath)
+        devParPat.setData({tempVideoPath:tempFilePath});
+        let data=devParPat.data;
+        if(data.videoUrl1==null)
+          devParPat.setVideo(tempFilePath);
       }
     })
   },
@@ -229,6 +234,9 @@ Page({
     }
     devParPat.setPhotoLocation();
   },
+  deleteVideo:function(){
+    devParPat.setData({videoUrl1:null});
+  },
   setPhoto:function(num,url){
     switch (num) {
       case 1:
@@ -241,6 +249,9 @@ Page({
         devParPat.setData({photoUrl3:url});
         break;
     }
+  },
+  setVideo:function(url){
+    devParPat.setData({videoUrl1:url});
   },
   setPhotoLocation:function(){
     let item1Style="item1Style";

@@ -32,7 +32,7 @@
   </view>
   <view class="item_v {{item3Style}}" wx:if="{{photoUrl3!=null}}">
     <image class="photo_img" src="{{photoUrl3}}"/>
-    <image class="delete_but_img" src="/images/004.png"/>
+    <image class="delete_but_img" src="/images/004.png" data-num="3" catchtap="deletePhoto"/>
   </view>
 </view>
 <view class="upload_video_v">
@@ -40,9 +40,9 @@
   <text class="take_text">视频</text>
 </view>
 <view class="video_list_v">
-  <view class="item_v">
-    <video src="{{serverRootIP}}{{dppr.videoUrl1}}"/>
-    <image class="delete_but_img" src="/images/004.png"/>
+  <view class="item_v" wx:if="{{videoUrl1!=null}}">
+    <video src="{{videoUrl1}}"/>
+    <image class="delete_but_img" src="/images/004.png" catchtap="deleteVideo"/>
   </view>
 </view>
 <view class="pdpMemo_v">
