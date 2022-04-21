@@ -90,6 +90,13 @@ Page({
         let pdp=data.pdp;
         let dppr=data.dppr;
         devParPat.setData({pdp:pdp,dppr:dppr});
+        if(dppr.photoUrl1!=null)
+          devParPat.setPhoto(1,serverRootIP+dppr.photoUrl1);
+        if(dppr.photoUrl2!=null)
+          devParPat.setPhoto(2,serverRootIP+dppr.photoUrl2);
+        if(dppr.photoUrl3!=null)
+          devParPat.setPhoto(3,serverRootIP+dppr.photoUrl3);
+        devParPat.setPhotoLocation();
       }
     })
   },
@@ -113,6 +120,18 @@ Page({
       success: function (res) {
         console.log("res.tempFilePaths==="+res.tempFilePaths)
         devParPat.setData({tempPhotoPaths:res.tempFilePaths});
+        
+        let tempFilePaths=res.tempFilePaths;
+        let data=devParPat.data;
+        for(let i=0;i<tempFilePaths.length;i++){
+          if(data.photoUrl1==null)
+            devParPat.setPhoto(1,res.tempFilePaths[i]);
+          if(data.photoUrl2==null)
+            devParPat.setPhoto(2,res.tempFilePaths[i]);
+          if(data.photoUrl3==null)
+            devParPat.setPhoto(3,res.tempFilePaths[i]);
+        }
+        devParPat.setPhotoLocation();
       }
     })
   },
@@ -194,6 +213,53 @@ Page({
         
       }
     })
+  },
+  deletePhoto:function(e){
+    let num=e.currentTarget.dataset.num;
+    switch (num) {
+      case "1":
+        devParPat.setData({photoUrl1:null});
+        break;
+      case "2":
+        devParPat.setData({photoUrl2:null});
+        break;
+      case "3":
+        devParPat.setData({photoUrl3:null});
+        break;
+    }
+    devParPat.setPhotoLocation();
+  },
+  setPhoto:function(num,url){
+    switch (num) {
+      case 1:
+        devParPat.setData({photoUrl1:url});
+        break;
+      case 2:
+        devParPat.setData({photoUrl2:url});
+        break;
+      case 3:
+        devParPat.setData({photoUrl3:url});
+        break;
+    }
+  },
+  setPhotoLocation:function(){
+    let item1Style="item1Style";
+    let item2Style="item2Style";
+    let item3Style="item3Style";
+    let data=devParPat.data;
+    let photoUrl1=data.photoUrl1;
+    let photoUrl2=data.photoUrl2;
+    let photoUrl3=data.photoUrl3;
+    if(photoUrl1!=null&photoUrl2!=null&photoUrl3!=null)
+      devParPat.setData({item1Style:item1Style,item2Style:item2Style,item3Style:item3Style});
+    else if(photoUrl1!=null&photoUrl2!=null&photoUrl3==null)
+      devParPat.setData({item1Style:item1Style,item2Style:item2Style});
+    else if(photoUrl1!=null&photoUrl2==null&photoUrl3==null)
+      devParPat.setData({item1Style:item1Style});
+    else if(photoUrl1==null&photoUrl2!=null&photoUrl3!=null)
+      devParPat.setData({item2Style:item1Style,item3Style:item2Style});
+    else if(photoUrl1==null&photoUrl2!=null&photoUrl3==null)
+      devParPat.setData({item2Style:item1Style});
   },
   goPage:function(e){
     let id=e.currentTarget.dataset.id;

@@ -22,16 +22,16 @@
   <text class="take_text">拍照</text>
 </view>
 <view class="photo_list_v">
-  <view class="item_v" wx:if="{{dppr.photoUrl1!=null}}">
-    <image class="photo_img" src="{{serverRootIP}}{{dppr.photoUrl1}}"/>
-    <image class="delete_but_img" src="/images/004.png"/>
+  <view class="item_v {{item1Style}}" wx:if="{{photoUrl1!=null}}">
+    <image class="photo_img" src="{{photoUrl1}}"/>
+    <image class="delete_but_img" src="/images/004.png" data-num="1" catchtap="deletePhoto"/>
   </view>
-  <view class="item_v" wx:if="{{dppr.photoUrl2!=null}}" style="margin-left:105px;margin-top:-100px;">
-    <image class="photo_img" src="{{serverRootIP}}{{dppr.photoUrl2}}"/>
-    <image class="delete_but_img" src="/images/004.png"/>
+  <view class="item_v {{item2Style}}" wx:if="{{photoUrl2!=null}}">
+    <image class="photo_img" src="{{photoUrl2}}"/>
+    <image class="delete_but_img" src="/images/004.png" data-num="2" catchtap="deletePhoto"/>
   </view>
-  <view class="item_v" wx:if="{{dppr.photoUrl3!=null}}" style="margin-left:210px;margin-top:-100px;">
-    <image class="photo_img" src="{{serverRootIP}}{{dppr.photoUrl3}}"/>
+  <view class="item_v {{item3Style}}" wx:if="{{photoUrl3!=null}}">
+    <image class="photo_img" src="{{photoUrl3}}"/>
     <image class="delete_but_img" src="/images/004.png"/>
   </view>
 </view>
