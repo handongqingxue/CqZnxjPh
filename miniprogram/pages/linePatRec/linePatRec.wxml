@@ -21,14 +21,14 @@
     <view class="item_v">
       <text class="name_text">{{item.name}}</text>
       <text class="ppacl_text">巡项总数:</text>
-      <text class="fpac_text">96</text>
+      <text class="fpac_text">{{item.finishParCount}}</text>
       <text class="pafgx_text">/</text>
-      <text class="ppac_text">96</text>
+      <text class="ppac_text">{{item.patParCount}}</text>
       <text class="paccl_text">巡点总数:</text>
-      <text class="facc_text">12</text>
+      <text class="facc_text">{{item.finishAccCount}}</text>
       <text class="acfgx_text">/</text>
-      <text class="pacc_text">12</text>
-      <text class="percent_val_text">100</text>
+      <text class="pacc_text">{{item.patAccCount}}</text>
+      <text class="percent_val_text">{{item.finishAccPercent}}</text>
       <text class="percent_sign_text">%</text>
     </view>
   </view>
