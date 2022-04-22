@@ -74,15 +74,72 @@
 }
 .pl_list_v .item_v{
   width:100%;
-  height:60px;
+  height:65px;
+  /*
   background-color:#00f;
+  */
 }
 .pl_list_v .item_v .name_text{
+  margin-top:5px;
   font-size:13px;
   position:absolute;
 }
-.pl_list_v .item_v .paccl_text{
+.pl_list_v .item_v .ppacl_text{
   font-size:10px;
-  margin-top:20px;
+  margin-top:25px;
+  position:absolute;
+}
+.pl_list_v .item_v .fpac_text{
+  margin-top:25px;
+  margin-left:50px;
+  font-size:10px;
+  position:absolute;
+}
+.pl_list_v .item_v .pafgx_text{
+  margin-top:25px;
+  margin-left:70px;
+  font-size:10px;
+  position:absolute;
+}
+.pl_list_v .item_v .ppac_text{
+  margin-top:25px;
+  margin-left:80px;
+  font-size:10px;
+  position:absolute;
+}
+.pl_list_v .item_v .paccl_text{
+  margin-top:25px;
+  margin-left:120px;
+  font-size:10px;
+  position:absolute;
+}
+.pl_list_v .item_v .facc_text{
+  margin-top:25px;
+  margin-left:170px;
+  font-size:10px;
+  position:absolute;
+}
+.pl_list_v .item_v .acfgx_text{
+  margin-top:25px;
+  margin-left:190px;
+  font-size:10px;
+  position:absolute;
+}
+.pl_list_v .item_v .pacc_text{
+  margin-top:25px;
+  margin-left:200px;
+  font-size:10px;
+  position:absolute;
+}
+.pl_list_v .item_v .percent_val_text{
+  margin-top:40px;
+  margin-left:200px;
+  color: #2793E5;
+  position:absolute;
+}
+.pl_list_v .item_v .percent_sign_text{
+  margin-top:40px;
+  margin-left:230px;
+  color: #2793E5;
   position:absolute;
 }

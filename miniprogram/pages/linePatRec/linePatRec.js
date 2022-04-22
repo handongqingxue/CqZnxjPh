@@ -1,4 +1,7 @@
 // pages/linePatRec/linePatRec.js
+var linePatRec;
+var rootIP;
+
 Page({
 
   /**
@@ -12,6 +15,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    linePatRec=this;
+    rootIP=getApp().getRootIP();
 
   },
 
@@ -19,7 +24,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    linePatRec.getPLTotalInfo();
   },
 
   /**
@@ -62,6 +67,20 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getPLTotalInfo:function(){
+    wx.request({
+      url: rootIP+"getPLTotalInfo",
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        let data=res.data;
+        linePatRec.setData({plList:data.plList});
+        linePatRec.setData({jrxjwcl:data.jrxjwcl});
+      }
+    })
   },
   /**
    * 扫码事件:https://blog.csdn.net/qq_29528701/article/details/117391740

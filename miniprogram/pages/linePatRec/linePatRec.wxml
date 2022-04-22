@@ -4,7 +4,7 @@
   <image class="scan_but_img" src="/images/001.png" catchtap="scanCodeEvent"/>
   <view class="jrxjwcl_v">
     <view class="title_v">今日巡检完成率</view>
-    <view class="val_v">55</view>
+    <view class="val_v">{{jrxjwcl}}</view>
     <text class="bfh_text">%</text>
   </view>
   <view class="xjlx_v">
@@ -17,19 +17,19 @@
       <text>临时巡检</text>
     </view>
   </view>
-  <view class="pl_list_v">
+  <view class="pl_list_v" wx:for-items="{{plList}}">
     <view class="item_v">
-      <text class="name_text">汽车巡检路线</text>
-      <text class="paccl_text">巡项总数:</text>
-      <text class="facc_text" style="font-size:10px;margin-top:20px;margin-left:50px;position:absolute;">96</text>
-      <text class="acfgx_text" style="font-size:10px;margin-top:20px;margin-left:70px;position:absolute;">/</text>
-      <text class="pacc_text" style="font-size:10px;margin-top:20px;margin-left:80px;position:absolute;">96</text>
-      <text class="parcl_text" style="font-size:10px;margin-top:20px;margin-left:120px;position:absolute;">巡点总数:</text>
-      <text class="farc_text" style="font-size:10px;margin-top:20px;margin-left:170px;position:absolute;">12</text>
-      <text class="arfgx_text" style="font-size:10px;margin-top:20px;margin-left:190px;position:absolute;">/</text>
-      <text class="parc_text" style="font-size:10px;margin-top:20px;margin-left:200px;position:absolute;">12</text>
-      <text class="percent_val_text" style="margin-top:35px;margin-left:200px;color: #2793E5;position:absolute;">100</text>
-      <text class="percent_sign_text" style="margin-top:35px;margin-left:230px;color: #2793E5;position:absolute;">%</text>
+      <text class="name_text">{{item.name}}</text>
+      <text class="ppacl_text">巡项总数:</text>
+      <text class="fpac_text">96</text>
+      <text class="pafgx_text">/</text>
+      <text class="ppac_text">96</text>
+      <text class="paccl_text">巡点总数:</text>
+      <text class="facc_text">12</text>
+      <text class="acfgx_text">/</text>
+      <text class="pacc_text">12</text>
+      <text class="percent_val_text">100</text>
+      <text class="percent_sign_text">%</text>
     </view>
   </view>
 </view>
