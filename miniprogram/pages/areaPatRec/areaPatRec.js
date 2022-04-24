@@ -1,4 +1,7 @@
 // miniprogram/pages/areaPatRec/areaPatRec.js
+var areaPatRec;
+var rootIP;
+
 Page({
 
   /**
@@ -12,14 +15,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    areaPatRec=this;
+    rootIP=getApp().getRootIP();
+    let plId=1;
+    areaPatRec.setData({plId:plId});
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    areaPatRec.getPAList();
   },
 
   /**
@@ -62,5 +68,23 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getPAList:function(){
+    let plId=areaPatRec.data.plId;
+    wx.request({
+      url: rootIP+"getPAList",
+      method: 'POST',
+      data: { plId:plId},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        console.log(res);
+        let data=res.data;
+        let plName=data.plName;
+        let paList=data.paList;
+        areaPatRec.setData({plName:plName,paList:paList});
+      }
+    })
   }
 })

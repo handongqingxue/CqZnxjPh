@@ -20,7 +20,10 @@
   margin-left:-162px;
   position:absolute;
 }
-.pa_list_v,.pa_item_v,.pda_list_v{
+.pa_list_v{
+  width:100%;
+}
+.pa_list_v .pa_item_v{
   width:100%;
 }
 .pa_list_v .pa_item_v .pa_finish_v{
@@ -28,18 +31,45 @@
   height:50px;
   line-height:50px;
   background-color:#fff;
+  padding: 1px;
 }
-.pa_list_v .pa_item_v .pa_finish_v .finish_img{
-  width:40px;
-  height:30px;
+.pa_list_v .pa_item_v .pa_finish_v .finish_sign_v{
+  width:30px;
+  height:20px;
+  line-height:20px;
   margin-top:10px;
-  margin-left: 10px;
-  position:absolute;
+  margin-left: 15px;
+  text-align: center;
+  border-radius: 10px;
+}
+.pa_list_v .pa_item_v .pa_finish_v .finished_v{
+  color: #2793E5;
+  border: #2793E5 solid 1px;
+}
+.pa_list_v .pa_item_v .pa_finish_v .unFinished_v{
+  color: #eee;
+  border: #eee solid 1px;
 }
 .pa_list_v .pa_item_v .pa_finish_v .paName_v{
   color: #000;
   font-size:15px;
+  margin-top: -38px;
   margin-left: 60px;
+  position:absolute;
+}
+.pa_list_v .pa_item_v .pa_finish_v .finish_text_v{
+  width:60px;
+  height:20px;
+  line-height:20px;
+  margin-top:-23px;
+  margin-right: 10px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 10px;
+  float: right;
+}
+.pa_list_v .pa_item_v .pda_list_v{
+  width:100%;
 }
 .pa_list_v .pa_item_v .pda_list_v .pda_item_v{
   width:100%;
@@ -68,38 +98,38 @@
   border-radius:8px;
 }
 .pa_list_v .pa_item_v .pda_list_v .pda_item_v .time_text{
-  margin-top:-3px;
+  margin-top:10px;
   margin-left:20px;
   font-size:12px;
   position: absolute;
 }
 .pa_list_v .pa_item_v .pda_list_v .pda_item_v .pdaName_v{
-  margin-top:20px;
+  margin-top:33px;
   margin-left:20px;
   font-size:15px;
   position: absolute;
 }
 .pa_list_v .pa_item_v .pda_list_v .pda_item_v .ppacl_text{
-  margin-top:45px;
+  margin-top:58px;
   margin-left:20px;
   font-size:12px;
   position:absolute;
 }
 .pa_list_v .pa_item_v .pda_list_v .pda_item_v .fpac_text{
-  margin-top:45px;
+  margin-top:58px;
   margin-left:100px;
   color: #2793E5;
   font-size:12px;
   position:absolute;
 }
 .pa_list_v .pa_item_v .pda_list_v .pda_item_v .pafgx_text{
-  margin-top:45px;
+  margin-top:58px;
   margin-left:120px;
   font-size:12px;
   position:absolute;
 }
 .pa_list_v .pa_item_v .pda_list_v .pda_item_v .ppac_text{
-  margin-top:45px;
+  margin-top:58px;
   margin-left:150px;
   font-size:12px;
   position:absolute;
