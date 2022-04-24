@@ -1,0 +1,20 @@
+<!--miniprogram/pages/areaPatRec/areaPatRec.wxml-->
+<view class="main_v">
+  <view class="pl_v">
+    <text class="plName_text">{{plName}}嬲</text>
+    <image class="back_but_img" src="/images/008.png"/>
+  </view>
+  <view class="pa_list_v">
+    <view class="pa_item_v">
+      <view class="pa_finish_v">
+        <image class="finish_img" src="/images/009.png"/>
+        <text class="paName_v">{{paName}}bbb</text>
+        <view class="pda_list_v">
+          <view class="pda_item_v">
+            <view class="num_v">√</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

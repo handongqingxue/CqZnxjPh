@@ -17,7 +17,9 @@
   width:100px;
   height:100px;
   text-align:center;
+  /*
   background-color:red;
+  */
   margin:25px auto 0;
   padding:1px;
 }
@@ -33,7 +35,7 @@
 }
 .jrxjwcl_v .bfh_text{
   margin-top:-25px;
-  margin-left:20px;
+  margin-left:30px;
   position:absolute;
 }
 .xjlx_v{
