@@ -22,9 +22,10 @@ Page({
     rootIP=getApp().getRootIP();
     serverRootIP=getApp().getServerRootIP();
 
-    //let pdpId=options.pdpId;
-    let pdpId=8;
-    devParPat.setData({pdpId:pdpId,serverRootIP:serverRootIP});
+    let pdpId=options.pdpId;
+    //let pdpId=1;
+    let startTime=devParPat.getNowTime();
+    devParPat.setData({pdpId:pdpId,startTime:startTime,serverRootIP:serverRootIP});
   },
 
   /**
@@ -213,6 +214,7 @@ Page({
     paramData.pdpId=pdpId;
     paramData.ptId=ptId;
     paramData.psId=psId;
+    paramData.startTime=devParPat.data.startTime;
     //{ paramIfExce:paramIfExce,paramExceInfo:paramExceInfo,paramMemo:paramMemo,plId:plId,paId:paId,pdaId:pdaId,pdpId:pdpId,ptId:ptId,psId:psId}
     wx.request({
       url: rootIP+"saveDevParPatRec",
@@ -312,6 +314,16 @@ Page({
       devParPat.setData({item2Style:item1Style,item3Style:item2Style});
     else if(photoUrl1==null&photoUrl2!=null&photoUrl3==null)
       devParPat.setData({item2Style:item1Style});
+  },
+  getNowTime:function(){
+    let date=new Date();
+    let year=date.getFullYear();
+    let month=date.getMonth()+1;
+    let dateOfMonth=date.getDate();
+    let hour=date.getHours();
+    let minute=date.getMinutes();
+    let second=date.getSeconds();
+    return year+"-"+(month<10?"0"+month:month)+"-"+(dateOfMonth<10?"0"+dateOfMonth:dateOfMonth)+" "+(hour<10?"0"+hour:hour)+":"+(minute<10?"0"+minute:minute)+":"+(second<10?"0"+second:second);
   },
   goPage:function(e){
     let id=e.currentTarget.dataset.id;
