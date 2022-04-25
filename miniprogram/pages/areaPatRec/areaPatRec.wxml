@@ -15,9 +15,10 @@
       </view>
       <view class="pda_list_v" wx:for-items="{{item.pdaList}}">
         <view class="pda_item_v">
-          <view class="finish_v">√</view>
+          <view class="finish_sign_v finished_v" wx:if="{{item.finish}}">√</view>
+          <view class="finish_sign_v unFinished_v" wx:else>-</view>
           <view class="content_v">
-            <text class="time_text">{{item.startTime}}-{{item.endTime}}</text>
+            <text class="time_text">{{item.startTimeHi}}-{{item.endTimeHi}}</text>
             <text class="pdaName_v">{{item.no}}{{item.pdName}}</text>
             <text class="ppacl_text">巡项总数:</text>
             <text class="fpac_text">{{item.finishParCount}}</text>

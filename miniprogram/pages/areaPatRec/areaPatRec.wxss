@@ -77,7 +77,7 @@
   background-color: #0f0;
   padding: 1px;
 }
-.pa_list_v .pa_item_v .pda_list_v .pda_item_v .finish_v{
+.pa_list_v .pa_item_v .pda_list_v .pda_item_v .finish_sign_v{
   width:30px;
   height:30px;
   line-height:30px;
@@ -85,9 +85,14 @@
   margin-left:15px;
   color:#fff;
   text-align:center;
-  background-color:#2793E5;
   border-radius:15px;
   position: absolute;
+}
+.pa_list_v .pa_item_v .pda_list_v .pda_item_v .finished_v{
+  background-color:#2793E5;
+}
+.pa_list_v .pa_item_v .pda_list_v .pda_item_v .unFinished_v{
+  background-color:#FD5E92;
 }
 .pa_list_v .pa_item_v .pda_list_v .pda_item_v .content_v{
   width:260px;
