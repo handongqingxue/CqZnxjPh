@@ -13,11 +13,11 @@
   color:#707070;
   font-size: 18px;
 }
-.back_but_img{
+.back_but_v{
   width:25px;
   height:37px;
-  margin-top:6px;
-  margin-left:-162px;
+  margin-top:-50px;
+  margin-left:10px;
   position:absolute;
 }
 .pa_list_v{
@@ -74,7 +74,9 @@
 .pa_list_v .pa_item_v .pda_list_v .pda_item_v{
   width:100%;
   height:120px;
+  /*
   background-color: #0f0;
+  */
   padding: 1px;
 }
 .pa_list_v .pa_item_v .pda_list_v .pda_item_v .finish_sign_v{

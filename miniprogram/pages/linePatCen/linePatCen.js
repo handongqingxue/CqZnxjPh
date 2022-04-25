@@ -1,5 +1,5 @@
-// miniprogram/pages/devAccPatEdit/devAccPatEdit.js
-var devAccPat;
+// pages/linePatRec/linePatRec.js
+var linePatRec;
 var rootIP;
 
 Page({
@@ -15,23 +15,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    devAccPat=this;
+    linePatRec=this;
     rootIP=getApp().getRootIP();
-    console.log("rootIP==="+rootIP)
 
-    let plId=options.plId;
-    let pdaNo=options.pdaNo;
-    console.log("plId===="+plId)
-    console.log("pdaNo===="+pdaNo)
-    //let pdaNo="0001";
-    devAccPat.setData({plId:plId,pdaNo:pdaNo,backButSign:"<"});
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    devAccPat.getPDAQrcodeInfo();
+    linePatRec.getPLTotalInfo();
   },
 
   /**
@@ -75,40 +68,39 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getPDAQrcodeInfo:function(){
-    let pdaNo=devAccPat.data.pdaNo;
+  getPLTotalInfo:function(){
     wx.request({
-      url: rootIP+"getPDAQrcodeInfo",
+      url: rootIP+"getPLTotalInfo",
       method: 'POST',
-      data: { pdaNo:pdaNo},
       header: {
         'content-type': 'application/x-www-form-urlencoded',
       },
       success: function (res) {
-        console.log(res);
         let data=res.data;
-        let pda=data.pda;
-        let pdpList=data.pdpList;
-        devAccPat.setData({plName:pda.plName,paName:pda.paName,pdName:pda.pdName,pdpList:pdpList});
+        linePatRec.setData({plList:data.plList});
+        linePatRec.setData({jrxjwcl:data.jrxjwcl});
+      }
+    })
+  },
+  /**
+   * 扫码事件:https://blog.csdn.net/qq_29528701/article/details/117391740
+   */
+  scanCodeEvent: function(){
+    wx.scanCode({
+      //onlyFromCamera: true,// 只允许从相机扫码
+      success(res){
+        //console.log("扫码成功："+JSON.stringify(res))
+        wx.redirectTo({
+          url: '/pages/devAccPat/devAccPat?pdaNo='+res.result,
+        })
       }
     })
   },
   goPage:function(e){
+    let id=e.currentTarget.dataset.id;
     let page=e.currentTarget.dataset.page;
-    let params="";
-    if(page=="areaPatCen"){
-      let plId=devAccPat.data.plId;
-      let pdaNo=devAccPat.data.pdaNo;
-      params="?plId="+plId+"&pdaNo="+pdaNo;
-    }
-    else if(page=="devParPatSave"){
-      let plId=devAccPat.data.plId;
-      let pdaNo=devAccPat.data.pdaNo;
-      let id=e.currentTarget.dataset.id;
-      params="?plId="+plId+"&pdaNo="+pdaNo+"&pdpId="+id;
-    }
     wx.redirectTo({
-      url: '/pages/'+page+'/'+page+params,
+      url: '/pages/'+page+'/'+page+'?plId='+id,
     })
   }
 })

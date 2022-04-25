@@ -1,7 +1,8 @@
 <!--miniprogram/pages/devAccPat/devAccPat.wxml-->
 <view class="main_v">
   <view class="pl_v">
-    <text class="plName_v">{{plName}}</text>
+    <text class="plName_text">{{plName}}</text>
+    <view class="back_but_v" data-page="areaPatCen" catchtap="goPage">{{backButSign}}</view>
   </view>
   <view class="pa_v">
     <text class="paName_v">{{paName}}</text>
@@ -15,7 +16,7 @@
   </view>
   <scroll-view class="pdp_list_sv">
     <view class="pdp_list_v" wx:for-items="{{pdpList}}">
-      <view class="item_v" data-id="{{item.id}}" catchtap="goPage">
+      <view class="item_v" data-id="{{item.id}}" data-page="devParPatSave" catchtap="goPage">
         <view class="num_v">{{index+1}}</view>
         <text class="pdpName_t">{{item.name}}</text>
         <text class="pdpValue_t">30</text>

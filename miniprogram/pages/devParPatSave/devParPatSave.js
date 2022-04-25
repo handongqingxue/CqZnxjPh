@@ -21,11 +21,13 @@ Page({
     devParPat=this;
     rootIP=getApp().getRootIP();
     serverRootIP=getApp().getServerRootIP();
-
+    
+    let plId=options.plId;
+    let pdaNo=options.pdaNo;
     let pdpId=options.pdpId;
     //let pdpId=1;
     let startTime=devParPat.getNowTime();
-    devParPat.setData({pdpId:pdpId,startTime:startTime,serverRootIP:serverRootIP});
+    devParPat.setData({plId:plId,pdaNo:pdaNo,pdpId:pdpId,startTime:startTime,serverRootIP:serverRootIP});
   },
 
   /**
@@ -326,9 +328,11 @@ Page({
     return year+"-"+(month<10?"0"+month:month)+"-"+(dateOfMonth<10?"0"+dateOfMonth:dateOfMonth)+" "+(hour<10?"0"+hour:hour)+":"+(minute<10?"0"+minute:minute)+":"+(second<10?"0"+second:second);
   },
   goPage:function(e){
-    let id=e.currentTarget.dataset.id;
+    let plId=devParPat.data.plId;
+    let pdaNo=devParPat.data.pdaNo;
+    let page=e.currentTarget.dataset.page;
     wx.redirectTo({
-      url: '/pages/devParPat/devParPat?pdpId='+id,
+      url: '/pages/'+page+'/'+page+'?plId='+plId+'&pdaNo='+pdaNo,
     })
   }
 })

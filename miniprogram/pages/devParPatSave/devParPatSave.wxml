@@ -1,6 +1,6 @@
 <!--miniprogram/pages/devParPat/devParPat.wxml-->
 <view class="title_v">设备巡检</view>
-<image class="back_but_img" src="/images/002.png"/>
+<image class="back_but_img" src="/images/002.png" data-page="devAccPat" catchtap="goPage"/>
 <view class="pl_v">
   <text class="plName_v">{{pdp.plName}}</text>
 </view>

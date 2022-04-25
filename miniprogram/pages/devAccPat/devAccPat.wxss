@@ -9,8 +9,15 @@
   line-height:30px;
   text-align:center;
 }
-.plName_v{
+.plName_text{
   color:#707070;
+}
+.back_but_v{
+  width:25px;
+  height:37px;
+  margin-top:-30px;
+  margin-left:10px;
+  position:absolute;
 }
 .pa_v,.pda_v{
   width:100%;

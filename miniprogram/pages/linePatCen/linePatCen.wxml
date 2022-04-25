@@ -18,7 +18,7 @@
     </view>
   </view>
   <view class="pl_list_v" wx:for-items="{{plList}}">
-    <view class="item_v">
+    <view class="item_v" data-id="{{item.id}}" data-page="areaPatCen" catchtap="goPage">
       <text class="name_text">{{item.name}}</text>
       <text class="ppacl_text">巡项总数:</text>
       <text class="fpac_text">{{item.finishParCount}}</text>

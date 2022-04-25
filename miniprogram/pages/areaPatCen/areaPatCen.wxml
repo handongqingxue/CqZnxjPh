@@ -2,7 +2,7 @@
 <view class="main_v">
   <view class="pl_v">
     <text class="plName_text">{{plName}}</text>
-    <image class="back_but_img" src="/images/008.png"/>
+    <view class="back_but_v" data-page="linePatCen" catchtap="goPage">{{backButSign}}</view>
   </view>
   <view class="pa_list_v" wx:for-items="{{paList}}">
     <view class="pa_item_v">
@@ -14,7 +14,7 @@
         <view class="finish_text_v unFinished_v" wx:else>进行中</view>
       </view>
       <view class="pda_list_v" wx:for-items="{{item.pdaList}}">
-        <view class="pda_item_v">
+        <view class="pda_item_v" data-no="{{item.no}}" data-page="devAccPat" catchtap="goPage">
           <view class="finish_sign_v finished_v" wx:if="{{item.finish}}">√</view>
           <view class="finish_sign_v unFinished_v" wx:else>-</view>
           <view class="content_v">

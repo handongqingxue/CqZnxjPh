@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/areaPatRec/areaPatRec",
-    "pages/linePatRec/linePatRec",
-    "pages/devParPat/devParPat",
+    "pages/linePatCen/linePatCen",
     "pages/devAccPat/devAccPat",
+    "pages/areaPatCen/areaPatCen",
+    "pages/devParPatSave/devParPatSave",
+    "pages/devParPatDetail/devParPatDetail",
     "pages/index/index",
     "pages/getOpenId/index",
     "pages/getMiniProgramCode/index",

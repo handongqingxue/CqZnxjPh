@@ -1,5 +1,5 @@
-// pages/linePatRec/linePatRec.js
-var linePatRec;
+// miniprogram/pages/areaPatRec/areaPatRec.js
+var areaPatRec;
 var rootIP;
 
 Page({
@@ -15,16 +15,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    linePatRec=this;
+    areaPatRec=this;
     rootIP=getApp().getRootIP();
-
+    let plId=options.plId;
+    console.log("plId===="+plId)
+    //let plId=1;
+    areaPatRec.setData({plId:plId,backButSign:"<"});
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    linePatRec.getPLTotalInfo();
+    areaPatRec.getPAList();
   },
 
   /**
@@ -68,32 +71,38 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getPLTotalInfo:function(){
+  getPAList:function(){
+    let plId=areaPatRec.data.plId;
     wx.request({
-      url: rootIP+"getPLTotalInfo",
+      url: rootIP+"getPAList",
       method: 'POST',
+      data: { plId:plId},
       header: {
         'content-type': 'application/x-www-form-urlencoded',
       },
       success: function (res) {
+        console.log(res);
         let data=res.data;
-        linePatRec.setData({plList:data.plList});
-        linePatRec.setData({jrxjwcl:data.jrxjwcl});
+        let plName=data.plName;
+        let paList=data.paList;
+        areaPatRec.setData({plName:plName,paList:paList});
       }
     })
   },
-  /**
-   * 扫码事件:https://blog.csdn.net/qq_29528701/article/details/117391740
-   */
-  scanCodeEvent: function(){
-    wx.scanCode({
-      //onlyFromCamera: true,// 只允许从相机扫码
-      success(res){
-        //console.log("扫码成功："+JSON.stringify(res))
-        wx.redirectTo({
-          url: '/pages/devAccPat/devAccPat?pdaNo='+res.result,
-        })
-      }
+  goPage:function(e){
+    let page=e.currentTarget.dataset.page;
+    let params="";
+    if(page=="linePatCen"){
+      let plId=areaPatRec.data.plId;
+      params="?plId="+plId;
+    }
+    else if(page=="devAccPat"){
+      let plId=areaPatRec.data.plId;
+      let pdaNo=e.currentTarget.dataset.no;
+      params="?plId="+plId+"&pdaNo="+pdaNo;
+    }
+    wx.redirectTo({
+      url: '/pages/'+page+'/'+page+params,
     })
   }
 })
