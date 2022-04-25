@@ -13,19 +13,19 @@
         <view class="finish_text_v finished_v" wx:if="{{item.finish}}">已完成</view>
         <view class="finish_text_v unFinished_v" wx:else>进行中</view>
       </view>
-        <view class="pda_list_v">
-          <view class="pda_item_v">
-            <view class="finish_v">√</view>
-            <view class="content_v">
-              <text class="time_text">09:00-10:00</text>
-              <text class="pdaName_v">离心泵</text>
-              <text class="ppacl_text">巡项总数:</text>
-              <text class="fpac_text">1</text>
-              <text class="pafgx_text">/</text>
-              <text class="ppac_text">1</text>
-            </view>
+      <view class="pda_list_v" wx:for-items="{{item.pdaList}}">
+        <view class="pda_item_v">
+          <view class="finish_v">√</view>
+          <view class="content_v">
+            <text class="time_text">09:00-10:00</text>
+            <text class="pdaName_v">{{item.no}}{{item.pdName}}</text>
+            <text class="ppacl_text">巡项总数:</text>
+            <text class="fpac_text">{{item.finishParCount}}</text>
+            <text class="pafgx_text">/</text>
+            <text class="ppac_text">{{item.patParCount}}</text>
           </view>
         </view>
+      </view>
     </view>
   </view>
 </view>

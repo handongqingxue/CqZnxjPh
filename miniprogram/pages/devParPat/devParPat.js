@@ -22,8 +22,8 @@ Page({
     rootIP=getApp().getRootIP();
     serverRootIP=getApp().getServerRootIP();
 
-    let pdpId=options.pdpId;
-    //let pdpId=8;
+    //let pdpId=options.pdpId;
+    let pdpId=8;
     devParPat.setData({pdpId:pdpId,serverRootIP:serverRootIP});
   },
 
