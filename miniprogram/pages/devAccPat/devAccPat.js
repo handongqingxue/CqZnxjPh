@@ -89,7 +89,7 @@ Page({
         let data=res.data;
         let pda=data.pda;
         let pdpList=data.pdpList;
-        devAccPat.setData({plName:pda.plName,paName:pda.paName,pdName:pda.pdName,pdpList:pdpList});
+        devAccPat.setData({plName:pda.plName,paName:pda.paName,pdName:pda.pdName,finishParCount:pda.finishParCount,patParCount:pda.patParCount,pdpList:pdpList});
       }
     })
   },

@@ -10,9 +10,9 @@
   <view class="pda_v">
     <text class="pdaName_v">{{pdName}}</text>
     <text class="ppck_t">巡项总数:</text>
-    <text class="fpcv_t">8</text>
+    <text class="fpcv_t">{{finishParCount}}</text>
     <text class="ppc_line_t">/</text>
-    <text class="ppcv_t">12</text>
+    <text class="ppcv_t">{{patParCount}}</text>
   </view>
   <scroll-view class="pdp_list_sv">
     <view class="pdp_list_v" wx:for-items="{{pdpList}}">
