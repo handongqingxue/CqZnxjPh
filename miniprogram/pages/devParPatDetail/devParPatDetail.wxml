@@ -1,2 +1,49 @@
 <!--pages/devParPat/devParPatSave.wxml-->
-<text>pages/devParPat/devParPatSave.wxml</text>
+<view class="title_v">设备巡检</view>
+<image class="back_but_img" src="/images/002.png" data-page="devAccPat" catchtap="goPage"/>
+<view class="pl_v">
+  <text class="plName_v">{{pdp.plName}}</text>
+</view>
+<view class="pa_v">
+  <text class="paName_v">{{pdp.paName}}</text>
+</view>
+<view class="pd_v">
+  <text class="pdName_v">{{pdp.pdName}}</text>
+</view>
+<view class="pdp_v">
+  <text class="pdpName_v">{{pdp.name}}</text>
+</view>
+<view class="pdpVal_v" wx:if="{{pdp.type==1}}">
+  <view class="val_v">{{dppr.paramValue}}</view>
+  <text class="unit_text">{{pdp.unit}}</text>
+</view>
+<view class="pdpExceInfo_v" wx:if="{{pdp.type==2}}">
+  <view class="rg_v">
+    <radio-group bindchange="radioChange">
+      <radio value="0" checked="true">正常</radio>
+      <radio value="1">异常</radio>
+    </radio-group>
+  </view>
+  <view class="inp_v" wx:if="{{dppr.paramIfExce}}">
+    <input class="val_inp" id="pdpExceInfo_inp" value="{{dppr.paramExceInfo}}" bindinput="getInputValue"/>
+  </view>
+</view>
+<view class="photo_list_v">
+  <view class="item_v {{item1Style}}" wx:if="{{photoUrl1!=null}}">
+    <image class="photo_img" src="{{photoUrl1}}"/>
+  </view>
+  <view class="item_v {{item2Style}}" wx:if="{{photoUrl2!=null}}">
+    <image class="photo_img" src="{{photoUrl2}}"/>
+  </view>
+  <view class="item_v {{item3Style}}" wx:if="{{photoUrl3!=null}}">
+    <image class="photo_img" src="{{photoUrl3}}"/>
+  </view>
+</view>
+<view class="video_list_v">
+  <view class="item_v" wx:if="{{videoUrl1!=null}}">
+    <video src="{{videoUrl1}}"/>
+  </view>
+</view>
+<view class="pdpMemo_v" wx:if="{{dppr.paramMemo!=null}}">
+  <view class="val_v">{{dppr.paramMemo}}</view>
+</view>

@@ -1,5 +1,5 @@
-// miniprogram/pages/devParPat/devParPat.js
-var devParPat;
+// miniprogram/pages/devParPat/devParPatSave.js
+var devParPatSave;
 var rootIP;
 var serverRootIP;
 var ptId=1;
@@ -18,23 +18,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    devParPat=this;
+    devParPatSave=this;
     rootIP=getApp().getRootIP();
     serverRootIP=getApp().getServerRootIP();
     
+    /*
     let plId=options.plId;
     let pdaNo=options.pdaNo;
     let pdpId=options.pdpId;
-    //let pdpId=1;
-    let startTime=devParPat.getNowTime();
-    devParPat.setData({plId:plId,pdaNo:pdaNo,pdpId:pdpId,startTime:startTime,serverRootIP:serverRootIP});
+    */
+    let plId=1;
+    let pdaNo="0001";
+    let pdpId=1;
+    let startTime=devParPatSave.getNowTime();
+    devParPatSave.setData({plId:plId,pdaNo:pdaNo,pdpId:pdpId,startTime:startTime,serverRootIP:serverRootIP});
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    devParPat.getPDPInfo();
+    devParPatSave.getPDPInfo();
   },
 
   /**
@@ -79,7 +83,7 @@ Page({
 
   },
   getPDPInfo:function(){
-    let pdpId=devParPat.data.pdpId;
+    let pdpId=devParPatSave.data.pdpId;
     wx.request({
       url: rootIP+"getPDPInfo",
       method: 'POST',
@@ -92,44 +96,44 @@ Page({
         let data=res.data;
         let pdp=data.pdp;
         let dppr=data.dppr;
-        devParPat.setData({pdp:pdp,dppr:dppr});
+        devParPatSave.setData({pdp:pdp,dppr:dppr});
         if(dppr.photoUrl1!=null)
-          devParPat.setPhoto(1,serverRootIP+dppr.photoUrl1);
+          devParPatSave.setPhoto(1,serverRootIP+dppr.photoUrl1);
         if(dppr.photoUrl2!=null)
-          devParPat.setPhoto(2,serverRootIP+dppr.photoUrl2);
+          devParPatSave.setPhoto(2,serverRootIP+dppr.photoUrl2);
         if(dppr.photoUrl3!=null)
-          devParPat.setPhoto(3,serverRootIP+dppr.photoUrl3);
-        devParPat.setPhotoLocation();
+          devParPatSave.setPhoto(3,serverRootIP+dppr.photoUrl3);
+        devParPatSave.setPhotoLocation();
         if(dppr.videoUrl1!=null)
-          devParPat.setVideo(serverRootIP+dppr.videoUrl1);
+          devParPatSave.setVideo(serverRootIP+dppr.videoUrl1);
       }
     })
   },
   getInputValue:function(e){
     if(e.currentTarget.id=="pdpVal_inp"){
-      let dppr=devParPat.data.dppr;
+      let dppr=devParPatSave.data.dppr;
       dppr.paramValue=e.detail.value;
-      devParPat.setData({dppr:dppr});
+      devParPatSave.setData({dppr:dppr});
     }
     else if(e.currentTarget.id=="pdpExceInfo_inp"){
-      let dppr=devParPat.data.dppr;
+      let dppr=devParPatSave.data.dppr;
       dppr.paramExceInfo=e.detail.value;
-      devParPat.setData({dppr:dppr});
+      devParPatSave.setData({dppr:dppr});
     }
     else if(e.currentTarget.id=="pdpMemo_inp"){
-      let dppr=devParPat.data.dppr;
+      let dppr=devParPatSave.data.dppr;
       dppr.paramMemo=e.detail.value;
-      devParPat.setData({dppr:dppr});
+      devParPatSave.setData({dppr:dppr});
     }
   },
   radioChange:function(e){
     let value=e.detail.value;
-    let dppr=devParPat.data.dppr;
+    let dppr=devParPatSave.data.dppr;
     if(value==1)
       dppr.paramIfExce=true;
     else
       dppr.paramIfExce=false;
-    devParPat.setData({dppr:dppr});
+    devParPatSave.setData({dppr:dppr});
   },
   takePhoto:function(){
     wx.chooseImage({
@@ -138,19 +142,19 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         console.log("res.tempFilePaths==="+res.tempFilePaths)
-        devParPat.setData({tempPhotoPaths:res.tempFilePaths});
+        devParPatSave.setData({tempPhotoPaths:res.tempFilePaths});
         
         let tempFilePaths=res.tempFilePaths;
-        let data=devParPat.data;
+        let data=devParPatSave.data;
         for(let i=0;i<tempFilePaths.length;i++){
           if(data.photoUrl1==null)
-            devParPat.setPhoto(1,res.tempFilePaths[i]);
+            devParPatSave.setPhoto(1,res.tempFilePaths[i]);
           if(data.photoUrl2==null)
-            devParPat.setPhoto(2,res.tempFilePaths[i]);
+            devParPatSave.setPhoto(2,res.tempFilePaths[i]);
           if(data.photoUrl3==null)
-            devParPat.setPhoto(3,res.tempFilePaths[i]);
+            devParPatSave.setPhoto(3,res.tempFilePaths[i]);
         }
-        devParPat.setPhotoLocation();
+        devParPatSave.setPhotoLocation();
       }
     })
   },
@@ -162,19 +166,19 @@ Page({
       success(res) {
         let tempFilePath=res.tempFilePath;
         console.log(tempFilePath)
-        devParPat.setData({tempVideoPath:tempFilePath});
-        let data=devParPat.data;
+        devParPatSave.setData({tempVideoPath:tempFilePath});
+        let data=devParPatSave.data;
         if(data.videoUrl1==null)
-          devParPat.setVideo(tempFilePath);
+          devParPatSave.setVideo(tempFilePath);
       }
     })
   },
   save:function(){
     let paramIfExce;
-    let type=devParPat.data.pdp.type;
-    let paramValue=devParPat.data.dppr.paramValue;
-    let warnDown=devParPat.data.pdp.warnDown;
-    let warnUp=devParPat.data.pdp.warnUp;
+    let type=devParPatSave.data.pdp.type;
+    let paramValue=devParPatSave.data.dppr.paramValue;
+    let warnDown=devParPatSave.data.pdp.warnDown;
+    let warnUp=devParPatSave.data.pdp.warnUp;
     if(type==1){
       if(paramValue>=warnDown&paramValue<=warnUp)
         paramIfExce=false;
@@ -182,15 +186,15 @@ Page({
         paramIfExce=true;
     }
     else{
-      paramIfExce=devParPat.data.dppr.paramIfExce;
+      paramIfExce=devParPatSave.data.dppr.paramIfExce;
     }
-    let paramExceInfo=devParPat.data.dppr.paramExceInfo;
-    let paramMemo=devParPat.data.dppr.paramMemo;
-    let plId=devParPat.data.pdp.plId;
-    let paId=devParPat.data.pdp.paId;
-    let pdaId=devParPat.data.pdp.pdaId;
-    let pdpId=devParPat.data.pdp.id;
-    let tempPhotoPaths=devParPat.data.tempPhotoPaths;
+    let paramExceInfo=devParPatSave.data.dppr.paramExceInfo;
+    let paramMemo=devParPatSave.data.dppr.paramMemo;
+    let plId=devParPatSave.data.pdp.plId;
+    let paId=devParPatSave.data.pdp.paId;
+    let pdaId=devParPatSave.data.pdp.pdaId;
+    let pdpId=devParPatSave.data.pdp.id;
+    let tempPhotoPaths=devParPatSave.data.tempPhotoPaths;
     console.log("paramIfExce==="+paramIfExce)
     console.log("plId==="+plId)
     console.log("paId==="+paId)
@@ -216,7 +220,7 @@ Page({
     paramData.pdpId=pdpId;
     paramData.ptId=ptId;
     paramData.psId=psId;
-    paramData.startTime=devParPat.data.startTime;
+    paramData.startTime=devParPatSave.data.startTime;
     //{ paramIfExce:paramIfExce,paramExceInfo:paramExceInfo,paramMemo:paramMemo,plId:plId,paId:paId,pdaId:pdaId,pdpId:pdpId,ptId:ptId,psId:psId}
     wx.request({
       url: rootIP+"saveDevParPatRec",
@@ -228,13 +232,13 @@ Page({
       success: function (res) {
         console.log(res);
         if(tempPhotoPathLength>0)
-          devParPat.uploadPhoto(0);
+          devParPatSave.uploadPhoto(0);
       }
     })
   },
   uploadPhoto:function(index){
-    let pdpId=devParPat.data.pdp.id;
-    let tempPhotoPaths=devParPat.data.tempPhotoPaths;
+    let pdpId=devParPatSave.data.pdp.id;
+    let tempPhotoPaths=devParPatSave.data.tempPhotoPaths;
     wx.uploadFile({
       url: rootIP+'uploadFile', //仅为示例，非真实的接口地址
       filePath: tempPhotoPaths[index],
@@ -242,18 +246,18 @@ Page({
       formData:{fileNum:index+1,pdpId:pdpId,ptId:ptId},
       success: function(res){
         var data = res.data
-        let tempPhotoPathLength=devParPat.data.tempPhotoPaths.length;
+        let tempPhotoPathLength=devParPatSave.data.tempPhotoPaths.length;
         index++;
         if(index<tempPhotoPathLength)
-          devParPat.uploadPhoto(index);
+          devParPatSave.uploadPhoto(index);
         else
-          devParPat.uploadVideo();
+          devParPatSave.uploadVideo();
       }
     })
   },
   uploadVideo:function(){
-    let pdpId=devParPat.data.pdp.id;
-    let tempVideoPath=devParPat.data.tempVideoPath;
+    let pdpId=devParPatSave.data.pdp.id;
+    let tempVideoPath=devParPatSave.data.tempVideoPath;
     wx.uploadFile({
       url: rootIP+'uploadFile', //仅为示例，非真实的接口地址
       filePath: tempVideoPath,
@@ -268,54 +272,54 @@ Page({
     let num=e.currentTarget.dataset.num;
     switch (num) {
       case "1":
-        devParPat.setData({photoUrl1:null});
+        devParPatSave.setData({photoUrl1:null});
         break;
       case "2":
-        devParPat.setData({photoUrl2:null});
+        devParPatSave.setData({photoUrl2:null});
         break;
       case "3":
-        devParPat.setData({photoUrl3:null});
+        devParPatSave.setData({photoUrl3:null});
         break;
     }
-    devParPat.setPhotoLocation();
+    devParPatSave.setPhotoLocation();
   },
   deleteVideo:function(){
-    devParPat.setData({videoUrl1:null});
+    devParPatSave.setData({videoUrl1:null});
   },
   setPhoto:function(num,url){
     switch (num) {
       case 1:
-        devParPat.setData({photoUrl1:url});
+        devParPatSave.setData({photoUrl1:url});
         break;
       case 2:
-        devParPat.setData({photoUrl2:url});
+        devParPatSave.setData({photoUrl2:url});
         break;
       case 3:
-        devParPat.setData({photoUrl3:url});
+        devParPatSave.setData({photoUrl3:url});
         break;
     }
   },
   setVideo:function(url){
-    devParPat.setData({videoUrl1:url});
+    devParPatSave.setData({videoUrl1:url});
   },
   setPhotoLocation:function(){
     let item1Style="item1Style";
     let item2Style="item2Style";
     let item3Style="item3Style";
-    let data=devParPat.data;
+    let data=devParPatSave.data;
     let photoUrl1=data.photoUrl1;
     let photoUrl2=data.photoUrl2;
     let photoUrl3=data.photoUrl3;
     if(photoUrl1!=null&photoUrl2!=null&photoUrl3!=null)
-      devParPat.setData({item1Style:item1Style,item2Style:item2Style,item3Style:item3Style});
+      devParPatSave.setData({item1Style:item1Style,item2Style:item2Style,item3Style:item3Style});
     else if(photoUrl1!=null&photoUrl2!=null&photoUrl3==null)
-      devParPat.setData({item1Style:item1Style,item2Style:item2Style});
+      devParPatSave.setData({item1Style:item1Style,item2Style:item2Style});
     else if(photoUrl1!=null&photoUrl2==null&photoUrl3==null)
-      devParPat.setData({item1Style:item1Style});
+      devParPatSave.setData({item1Style:item1Style});
     else if(photoUrl1==null&photoUrl2!=null&photoUrl3!=null)
-      devParPat.setData({item2Style:item1Style,item3Style:item2Style});
+      devParPatSave.setData({item2Style:item1Style,item3Style:item2Style});
     else if(photoUrl1==null&photoUrl2!=null&photoUrl3==null)
-      devParPat.setData({item2Style:item1Style});
+      devParPatSave.setData({item2Style:item1Style});
   },
   getNowTime:function(){
     let date=new Date();
@@ -328,8 +332,8 @@ Page({
     return year+"-"+(month<10?"0"+month:month)+"-"+(dateOfMonth<10?"0"+dateOfMonth:dateOfMonth)+" "+(hour<10?"0"+hour:hour)+":"+(minute<10?"0"+minute:minute)+":"+(second<10?"0"+second:second);
   },
   goPage:function(e){
-    let plId=devParPat.data.plId;
-    let pdaNo=devParPat.data.pdaNo;
+    let plId=devParPatSave.data.plId;
+    let pdaNo=devParPatSave.data.pdaNo;
     let page=e.currentTarget.dataset.page;
     wx.redirectTo({
       url: '/pages/'+page+'/'+page+'?plId='+plId+'&pdaNo='+pdaNo,

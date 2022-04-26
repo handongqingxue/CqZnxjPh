@@ -101,7 +101,7 @@ Page({
       let pdaNo=devAccPat.data.pdaNo;
       params="?plId="+plId+"&pdaNo="+pdaNo;
     }
-    else if(page=="devParPatSave"){
+    else if(page=="devParPatDetail"){
       let plId=devAccPat.data.plId;
       let pdaNo=devAccPat.data.pdaNo;
       let id=e.currentTarget.dataset.id;
