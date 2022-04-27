@@ -1,6 +1,6 @@
 // app.js
-var rootIP = "http://127.0.0.1:8080/CqZnxj/phone/";
-var serverRootIP = "http://127.0.0.1:8080/";
+var rootIP = "http://192.168.2.166:8080/CqZnxj/phone/";
+var serverRootIP = "http://192.168.2.166:8080/";
 App({
   onLaunch: function () {
     if (!wx.cloud) {

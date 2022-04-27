@@ -24,7 +24,8 @@ Page({
     console.log("plId===="+plId)
     console.log("pdaNo===="+pdaNo)
     //let pdaNo="0001";
-    devAccPat.setData({plId:plId,pdaNo:pdaNo,backButSign:"<"});
+    let action=options.action;
+    devAccPat.setData({plId:plId,pdaNo:pdaNo,action:action,backButSign:"<"});
   },
 
   /**

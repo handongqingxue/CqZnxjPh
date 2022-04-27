@@ -233,6 +233,8 @@ Page({
         console.log(res);
         if(tempPhotoPathLength>0)
           devParPatSave.uploadPhoto(0);
+        else
+          devParPatSave.goBack();
       }
     })
   },
@@ -330,6 +332,10 @@ Page({
     let minute=date.getMinutes();
     let second=date.getSeconds();
     return year+"-"+(month<10?"0"+month:month)+"-"+(dateOfMonth<10?"0"+dateOfMonth:dateOfMonth)+" "+(hour<10?"0"+hour:hour)+":"+(minute<10?"0"+minute:minute)+":"+(second<10?"0"+second:second);
+  },
+  goBack:function(){
+    let eJS={currentTarget:{dataset:{page:"devAccPat"}}};
+    devParPatSave.goPage(eJS);
   },
   goPage:function(e){
     let plId=devParPatSave.data.plId;

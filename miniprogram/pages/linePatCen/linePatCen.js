@@ -91,7 +91,7 @@ Page({
       success(res){
         //console.log("扫码成功："+JSON.stringify(res))
         wx.redirectTo({
-          url: '/pages/devAccPat/devAccPat?pdaNo='+res.result,
+          url: '/pages/devAccPat/devAccPat?pdaNo='+res.result+"&action=scan",
         })
       }
     })
