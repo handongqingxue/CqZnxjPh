@@ -58,7 +58,7 @@
   background-color:#fff;
   border-bottom: #C8C8C8 solid 1px;
 }
-.pdpExceInfo_v .rg_v,.pdpExceInfo_v .inp_v{
+.pdpExceInfo_v .ifExce_v,.pdpExceInfo_v .inp_v{
   width:100%;
   height:40px;
 }

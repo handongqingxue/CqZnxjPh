@@ -75,7 +75,7 @@
   margin-left:60px;
   position:absolute;
 }
-.pdp_list_v .item_v .pdpValue_t{
+.pdp_list_v .item_v .pdpValue_t,.pdp_list_v .item_v .pdpIfExe_t{
   margin-top:-25px;
   margin-right:20px;
   float:right;

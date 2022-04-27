@@ -14,18 +14,14 @@
   <text class="pdpName_v">{{pdp.name}}</text>
 </view>
 <view class="pdpVal_v" wx:if="{{pdp.type==1}}">
-  <view class="val_v">{{dppr.paramValue}}</view>
+  <view class="val_v">{{dppr.paramValue==null?'':dppr.paramValue}}</view>
   <text class="unit_text">{{pdp.unit}}</text>
 </view>
 <view class="pdpExceInfo_v" wx:if="{{pdp.type==2}}">
-  <view class="rg_v">
-    <radio-group bindchange="radioChange">
-      <radio value="0" checked="true">正常</radio>
-      <radio value="1">异常</radio>
-    </radio-group>
-  </view>
+  <view class="ifExce_v" wx:if="{{dppr.paramIfExce}}">异常</view>
+  <view class="ifExce_v" wx:else>正常</view>
   <view class="inp_v" wx:if="{{dppr.paramIfExce}}">
-    <input class="val_inp" id="pdpExceInfo_inp" value="{{dppr.paramExceInfo}}" bindinput="getInputValue"/>
+    <input class="val_inp" id="pdpExceInfo_inp" value="{{dppr.paramExceInfo}}"/>
   </view>
 </view>
 <view class="photo_list_v">
