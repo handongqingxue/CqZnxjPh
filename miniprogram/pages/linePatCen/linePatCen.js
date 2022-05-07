@@ -90,8 +90,23 @@ Page({
       //onlyFromCamera: true,// 只允许从相机扫码
       success(res){
         //console.log("扫码成功："+JSON.stringify(res))
+        linePatRec.getCurrentTeamPLAASByPdaNo(res.result);
+      }
+    })
+  },
+  getCurrentTeamPLAASByPdaNo:function(pdaNo){
+    wx.request({
+      url: rootIP+"getCurrentTeamPLAASByPdaNo",
+      method: 'POST',
+      data: { pdaNo:pdaNo},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        let plaas=res.data.plaas;
+        let plId=plaas.plId;
         wx.redirectTo({
-          url: '/pages/devAccPat/devAccPat?pdaNo='+res.result+"&action=scan",
+          url: '/pages/devAccPat/devAccPat?plId='+plId+'&pdaNo='+pdaNo+"&action=scan",
         })
       }
     })

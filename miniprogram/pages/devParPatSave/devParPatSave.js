@@ -22,14 +22,14 @@ Page({
     rootIP=getApp().getRootIP();
     serverRootIP=getApp().getServerRootIP();
     
-    /*
     let plId=options.plId;
     let pdaNo=options.pdaNo;
     let pdpId=options.pdpId;
-    */
+    /*
     let plId=1;
     let pdaNo="0001";
     let pdpId=1;
+    */
     let startTime=devParPatSave.getNowTime();
     devParPatSave.setData({plId:plId,pdaNo:pdaNo,pdpId:pdpId,startTime:startTime,serverRootIP:serverRootIP});
   },
@@ -95,6 +95,7 @@ Page({
         console.log(res);
         let data=res.data;
         let pdp=data.pdp;
+        console.log("plId----"+pdp.plId)
         let dppr=data.dppr;
         devParPatSave.setData({pdp:pdp,dppr:dppr});
         if(dppr.photoUrl1!=null)
@@ -252,8 +253,13 @@ Page({
         index++;
         if(index<tempPhotoPathLength)
           devParPatSave.uploadPhoto(index);
-        else
-          devParPatSave.uploadVideo();
+        else{
+          let tempVideoPath=devParPatSave.data.tempVideoPath;
+          if(tempVideoPath==undefined)
+            devParPatSave.goBack();
+          else
+            devParPatSave.uploadVideo();
+        }
       }
     })
   },
@@ -266,7 +272,7 @@ Page({
       name: 'file',
       formData:{fileNum:4,pdpId:pdpId,ptId:ptId},
       success: function(res){
-        
+        devParPatSave.goBack();
       }
     })
   },
@@ -341,6 +347,7 @@ Page({
     let plId=devParPatSave.data.plId;
     let pdaNo=devParPatSave.data.pdaNo;
     let page=e.currentTarget.dataset.page;
+    console.log("plId????"+plId)
     wx.redirectTo({
       url: '/pages/'+page+'/'+page+'?plId='+plId+'&pdaNo='+pdaNo,
     })
