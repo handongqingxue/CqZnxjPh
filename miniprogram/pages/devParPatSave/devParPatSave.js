@@ -150,9 +150,9 @@ Page({
         for(let i=0;i<tempFilePaths.length;i++){
           if(data.photoUrl1==null)
             devParPatSave.setPhoto(1,res.tempFilePaths[i]);
-          if(data.photoUrl2==null)
+          else if(data.photoUrl2==null)
             devParPatSave.setPhoto(2,res.tempFilePaths[i]);
-          if(data.photoUrl3==null)
+          else if(data.photoUrl3==null)
             devParPatSave.setPhoto(3,res.tempFilePaths[i]);
         }
         devParPatSave.setPhotoLocation();
