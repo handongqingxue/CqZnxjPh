@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/linePatCen/linePatCen",
     "pages/devAccPat/devAccPat",
     "pages/areaPatCen/areaPatCen",

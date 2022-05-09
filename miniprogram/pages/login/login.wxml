@@ -1,0 +1,8 @@
+<!--miniprogram/pages/login/login.wxml-->
+<view class="main_v">
+  <view class="jobNumber_v">
+    <span class="jobNumber_span">工号</span>
+    <input class="jobNumber_inp" id="jobNumber_inp" type="text" placeholder="请输入工号" value="{{jobNumber}}" bindfocus="focusJobNumber" bindblur="checkJobNumber" bindinput="getInputValue"/>
+  </view>
+  <view class="login_but_v" catchtap="checkInfo">登录</view>
+</view>

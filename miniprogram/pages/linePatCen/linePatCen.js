@@ -17,7 +17,8 @@ Page({
   onLoad: function (options) {
     linePatRec=this;
     rootIP=getApp().getRootIP();
-
+    let staff=wx.getStorageSync("staff");
+    console.log("staff===="+staff)
   },
 
   /**
