@@ -21,7 +21,8 @@
   <view class="rg_v">
     <radio-group bindchange="radioChange">
       <radio value="0" checked="true">正常</radio>
-      <radio value="1">异常</radio>
+      <radio value="1" checked="true" wx:if="{{dppr.paramIfExce}}">异常</radio>
+      <radio value="1" wx:else>异常</radio>
     </radio-group>
   </view>
   <view class="inp_v" wx:if="{{dppr.paramIfExce}}">

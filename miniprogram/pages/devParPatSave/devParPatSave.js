@@ -2,8 +2,8 @@
 var devParPatSave;
 var rootIP;
 var serverRootIP;
-var ptId=1;
-var psId=1;
+var ptId;
+var psId;
 
 Page({
 
@@ -22,6 +22,10 @@ Page({
     rootIP=getApp().getRootIP();
     serverRootIP=getApp().getServerRootIP();
     
+    let staff=wx.getStorageSync("staff");
+    let patrolTeam=wx.getStorageSync("patrolTeam");
+    ptId=patrolTeam.id;
+    psId=staff.id;
     let plId=options.plId;
     let pdaNo=options.pdaNo;
     let pdpId=options.pdpId;
