@@ -50,12 +50,18 @@
   border-radius:15px;
 }
 .xjlx_v .rcxj_item_v{
-  color:#fff;
-  background-color:#2396EF;
+  margin-left:0px;
+  margin-top:0px;
 }
 .xjlx_v .lsxj_item_v{
   margin-left:140px;
   margin-top:-30px;
+}
+.xjlx_v .selected_item_v{
+  color:#fff;
+  background-color:#2396EF;
+}
+.xjlx_v .unSelected_item_v{
   color:#2793E5;
   background-color:#F8FCFF;
 }

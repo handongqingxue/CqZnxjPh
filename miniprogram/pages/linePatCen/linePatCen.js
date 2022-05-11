@@ -78,10 +78,30 @@ Page({
       },
       success: function (res) {
         let data=res.data;
-        linePatRec.setData({plList:data.plList});
+        linePatRec.setData({usualPlList:data.usualPlList});
+        linePatRec.setData({tempPlList:data.tempPlList});
+        let e={currentTarget:{dataset:{type:1}}};
+        linePatRec.showPlListByPpType(e);
         linePatRec.setData({jrxjwcl:data.jrxjwcl});
       }
     })
+  },
+  showPlListByPpType:function(e){
+    let xjlxItem1Style;
+    let xjlxItem2Style;
+    let plList;
+    let type=e.currentTarget.dataset.type;
+    if(type=="1"){
+      xjlxItem1Style="selected_item_v";
+      xjlxItem2Style="unSelected_item_v";
+      plList=linePatRec.data.usualPlList;
+    }
+    else if(type=="2"){
+      xjlxItem1Style="unSelected_item_v";
+      xjlxItem2Style="selected_item_v";
+      plList=linePatRec.data.tempPlList;
+    }
+    linePatRec.setData({xjlxItem1Style:xjlxItem1Style,xjlxItem2Style:xjlxItem2Style,plList:plList});
   },
   /**
    * 扫码事件:https://blog.csdn.net/qq_29528701/article/details/117391740

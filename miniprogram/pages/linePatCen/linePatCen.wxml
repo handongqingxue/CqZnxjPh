@@ -8,12 +8,12 @@
     <text class="bfh_text">%</text>
   </view>
   <view class="xjlx_v">
-    <view class="item_v rcxj_item_v">
-      <image src="/images/006.png"/>
+    <view class="item_v rcxj_item_v {{xjlxItem1Style}}" data-type="1" catchtap="showPlListByPpType">
+      <image src="/images/00{{xjlxItem1Style=='selected_item_v'?'6':'7'}}.png"/>
       <text>日常巡检</text>
     </view>
-    <view class="item_v lsxj_item_v">
-      <image src="/images/007.png"/>
+    <view class="item_v lsxj_item_v {{xjlxItem2Style}}" data-type="2" catchtap="showPlListByPpType">
+      <image src="/images/00{{xjlxItem2Style=='selected_item_v'?'6':'7'}}.png"/>
       <text>临时巡检</text>
     </view>
   </view>

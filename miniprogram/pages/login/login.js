@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    jobNumber:null
+    jobNumber:'13608977126'
   },
 
   /**
