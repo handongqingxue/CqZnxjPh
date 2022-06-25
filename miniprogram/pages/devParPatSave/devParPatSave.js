@@ -36,6 +36,15 @@ Page({
     */
     let startTime=devParPatSave.getNowTime();
     devParPatSave.setData({plId:plId,pdaNo:pdaNo,pdpId:pdpId,startTime:startTime,serverRootIP:serverRootIP});
+    wx.getLocation({
+      type: 'wgs84',
+      success:function(res){        
+        console.log(res.longitude+","+res.latitude)
+        res.longitude=123.38299;
+        res.latitude=31.06623;
+        devParPatSave.setData({longitude:res.longitude,latitude:res.latitude});
+      }
+    })
   },
 
   /**
@@ -200,6 +209,8 @@ Page({
     let pdaId=devParPatSave.data.pdp.pdaId;
     let pdpId=devParPatSave.data.pdp.id;
     let tempPhotoPaths=devParPatSave.data.tempPhotoPaths;
+    let longitude=devParPatSave.data.longitude;
+    let latitude=devParPatSave.data.latitude;
     console.log("paramIfExce==="+paramIfExce)
     console.log("plId==="+plId)
     console.log("paId==="+paId)
@@ -226,6 +237,8 @@ Page({
     paramData.ptId=ptId;
     paramData.psId=psId;
     paramData.startTime=devParPatSave.data.startTime;
+    paramData.longitude=longitude;
+    paramData.latitude=latitude;
     //{ paramIfExce:paramIfExce,paramExceInfo:paramExceInfo,paramMemo:paramMemo,plId:plId,paId:paId,pdaId:pdaId,pdpId:pdpId,ptId:ptId,psId:psId}
     wx.request({
       url: rootIP+"saveDevParPatRec",
