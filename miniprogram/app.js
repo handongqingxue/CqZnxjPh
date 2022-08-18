@@ -1,6 +1,8 @@
 // app.js
-var rootIP = "http://192.168.1.7:8080/CqZnxj/phone/";
-var serverRootIP = "http://192.168.1.7:8080/";
+var rootIP = "http://www.qrcodesy.com:8080/CqZnxj/phone/";
+var serverRootIP = "http://www.qrcodesy.com:8080/";
+//var rootIP = "http://192.168.1.100:8080/CqZnxj/phone/";
+//var serverRootIP = "http://192.168.1.100:8080/";
 App({
   onLaunch: function () {
     if (!wx.cloud) {

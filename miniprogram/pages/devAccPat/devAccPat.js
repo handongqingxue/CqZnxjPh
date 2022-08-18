@@ -102,11 +102,18 @@ Page({
       let pdaNo=devAccPat.data.pdaNo;
       params="?plId="+plId+"&pdaNo="+pdaNo;
     }
-    else if(page=="devParPatDetail"||page=="devParPatSave"){
+    else if(page=="devParPatDetail"){
       let plId=devAccPat.data.plId;
       let pdaNo=devAccPat.data.pdaNo;
       let id=e.currentTarget.dataset.id;
       params="?plId="+plId+"&pdaNo="+pdaNo+"&pdpId="+id;
+    }
+    else if(page=="devParPatSave"){
+      let plId=devAccPat.data.plId;
+      let pdaNo=devAccPat.data.pdaNo;
+      let id=e.currentTarget.dataset.id;
+      let action=devAccPat.data.action;
+      params="?plId="+plId+"&pdaNo="+pdaNo+"&pdpId="+id+"&action="+action;
     }
     wx.redirectTo({
       url: '/pages/'+page+'/'+page+params,

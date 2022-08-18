@@ -20,7 +20,7 @@
         <view class="num_v">{{index+1}}</view>
         <text class="pdpName_t">{{item.name}}</text>
         <text class="pdpValue_t" wx:if="{{item.type==1}}">{{item.paramValue==null?'':item.paramValue+item.unit}}</text>
-        <text class="pdpIfExe_t" wx:if="{{item.type==2}}">{{item.paramIfExce==null?'':item.paramIfExce?'异':'正'}}常</text>
+        <text class="pdpIfExe_t" wx:if="{{item.type==2}}">{{item.paramIfExce==null?'':item.paramIfExce?'异常':'正常'}}</text>
       </view>
     </view>
   </scroll-view>

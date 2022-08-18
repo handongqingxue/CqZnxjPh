@@ -34,8 +34,12 @@ Page({
     let pdaNo="0001";
     let pdpId=1;
     */
+    let action=options.action;
     let startTime=devParPatSave.getNowTime();
-    devParPatSave.setData({plId:plId,pdaNo:pdaNo,pdpId:pdpId,startTime:startTime,serverRootIP:serverRootIP});
+    let showSaveBut=true;
+    let showSavingBut=false;
+    let showSavedBut=false;
+    devParPatSave.setData({plId:plId,pdaNo:pdaNo,pdpId:pdpId,action:action,startTime:startTime,showSaveBut:showSaveBut,showSavingBut:showSavingBut,showSavedBut:showSavedBut,serverRootIP:serverRootIP});
     wx.getLocation({
       type: 'wgs84',
       success:function(res){        
@@ -188,6 +192,7 @@ Page({
     })
   },
   save:function(){
+    devParPatSave.saving(true);
     let paramIfExce;
     let type=devParPatSave.data.pdp.type;
     let paramValue=devParPatSave.data.dppr.paramValue;
@@ -251,10 +256,22 @@ Page({
         console.log(res);
         if(tempPhotoPathLength>0)
           devParPatSave.uploadPhoto(0);
-        else
-          devParPatSave.goBack();
+        else{
+          devParPatSave.saving(false);
+          setTimeout(() => {
+            devParPatSave.goBack();
+          }, 1000);
+        }
       }
     })
+  },
+  saving:function(flag){
+    if(flag){
+      devParPatSave.setData({showSaveBut:false,showSavingBut:true});
+    }
+    else{
+      devParPatSave.setData({showSavingBut:false,showSavedBut:true});
+    }
   },
   uploadPhoto:function(index){
     let pdpId=devParPatSave.data.pdp.id;
@@ -272,8 +289,12 @@ Page({
           devParPatSave.uploadPhoto(index);
         else{
           let tempVideoPath=devParPatSave.data.tempVideoPath;
-          if(tempVideoPath==undefined)
-            devParPatSave.goBack();
+          if(tempVideoPath==undefined){
+            devParPatSave.saving(false);
+            setTimeout(() => {
+              devParPatSave.goBack();
+            }, 1000);
+          }
           else
             devParPatSave.uploadVideo();
         }
@@ -289,7 +310,10 @@ Page({
       name: 'file',
       formData:{fileNum:4,pdpId:pdpId,ptId:ptId},
       success: function(res){
-        devParPatSave.goBack();
+        devParPatSave.saving(false);
+        setTimeout(() => {
+          devParPatSave.goBack();
+        }, 1000);
       }
     })
   },
@@ -363,10 +387,11 @@ Page({
   goPage:function(e){
     let plId=devParPatSave.data.plId;
     let pdaNo=devParPatSave.data.pdaNo;
+    let action=devParPatSave.data.action;
     let page=e.currentTarget.dataset.page;
     console.log("plId????"+plId)
     wx.redirectTo({
-      url: '/pages/'+page+'/'+page+'?plId='+plId+'&pdaNo='+pdaNo,
+      url: '/pages/'+page+'/'+page+'?plId='+plId+'&pdaNo='+pdaNo+"&action="+action,
     })
   }
 })

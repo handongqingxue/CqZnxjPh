@@ -60,4 +60,6 @@
 <view class="pdpMemo_v">
   <input class="val_inp" id="pdpMemo_inp" placeholder="备注" value="{{dppr.paramMemo}}" bindinput="getInputValue"/>
 </view>
-<view class="save_but_v" catchtap="save">保存</view>
+<view class="save_but_v" catchtap="save" wx:if="{{showSaveBut}}">保存</view>
+<view class="saving_but_v" wx:if="{{showSavingBut}}">保存中...</view>
+<view class="saved_but_v" wx:if="{{showSavedBut}}">已保存</view>
